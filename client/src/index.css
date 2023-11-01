@@ -1,0 +1,61 @@
+/*👇👇👇 welcome 👇👇👇 */
+
+.wel{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('./assets/images/welcome1.png'), lightgray 50% / cover no-repeat;
+    backdrop-filter: blur(2px);
+    object-fit: cover;
+  }
+.textwel{
+    font-family: 'Inknut Antiqua';
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.textonl{
+    font-family: 'Inknut Antiqua';
+    font-size: 76px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150px;
+}
+
+  /* 👆👆👆 welcome 👆👆👆 */
+
+  /*👇👇👇 signin 👇👇👇 */
+.signin{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('./assets/images/welcome1.png'), lightgray 50% / cover no-repeat;
+    backdrop-filter: blur(2px);
+    object-fit: cover;
+}
+.signtext{
+    font-family: 'Inknut Antiqua';
+    font-size: 76px;
+}
+.admin{
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(2px);
+}
+
+.student{
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(2px);
+}
+/* .adminimg{
+    height: auto;
+    width: auto;
+} */
+  /* 👆👆👆 signin 👆👆👆 */
+
+
+  /*👇👇👇 register 👇👇👇 */
+.rtext{
+    font-family: 'Inknut Antiqua';
+    font-size: 48px;
+}
+.wtext{
+    font-family: 'Inknut Antiqua';
+}
+
+
+  /* 👆👆👆 register 👆👆👆 */
