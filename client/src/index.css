@@ -59,3 +59,26 @@
 
 
   /* 👆👆👆 register 👆👆👆 */
+
+  .svnav{
+    margin: 0;
+    height: 100%;
+    overflow-y: hidden;
+  }
+
+  .home{
+    background-color: #5d7080;
+    backdrop-filter: blur(10px);
+  }
+  .box{
+    border: 1px solid black;
+    height: 350px;
+    width: 350px;
+    background-color:#89a8c7;
+  }
+
+  .prfpic{
+    border-bottom: 1px solid black;
+    height: 170px;
+    width: 350px;
+  }

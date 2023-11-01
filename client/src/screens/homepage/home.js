@@ -1,9 +1,33 @@
 import React from 'react'
+import NavBar from '../components/sidenavbar';
+import TopNaBbar from '../components/topnavbar';
 
 const Home = () => {
   return (
-    <div>
-      Hello
+    <div className="svnav row m-0">
+        <div className='p-0'>
+          <TopNaBbar/>
+        </div>
+        <div className="col-2 p-0">
+           <NavBar/>
+        </div>
+        <div className="home col">
+            <div className='box '>
+              <div className='prfpic'>
+                 
+                 <span>
+                  <b>Name</b>
+                 </span>
+              </div>
+              <div className='dets'>
+                  <b className='m-2 p-2'>E-Mail ID : </b><br/>
+                  <b className='m-2 p-2'>Phone Number : </b><br/>
+                  <b className='m-2 p-2'>Registration Number : </b><br/>
+                  <b className='m-2 p-2'>Batch : </b><br/>
+                  <b className='m-2 p-2'>Branch : </b><br/>
+              </div>
+            </div>
+        </div>
     </div>
   )
 }
