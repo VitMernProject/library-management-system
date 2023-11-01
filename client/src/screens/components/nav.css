@@ -1,0 +1,42 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    height: 645px;
+    background-color: #2b547e;
+    border: 1px solid #ffffff;
+  }
+  
+  li a {
+    display: block;
+    color: #ffffff;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  li {
+    text-align: left;
+    border-bottom: 1px solid white;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  li a.active {
+    background-color: #2b547e;
+    color: white;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: white;
+    color: rgb(0, 0, 0);
+  }
+
+  .tpnav{
+    background-color: black;
+    color: yellowgreen;
+    height: 50px;
+    font-size: xx-large;
+  }
