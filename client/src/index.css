@@ -6,18 +6,15 @@
     object-fit: cover;
   }
 .textwel{
-    font-family: 'Inknut Antiqua';
     font-size: 60px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
 }
 .textonl{
-    font-family: 'Inknut Antiqua';
     font-size: 76px;
     font-style: normal;
     font-weight: 600;
-    line-height: 150px;
 }
 
   /* 👆👆👆 welcome 👆👆👆 */
@@ -29,7 +26,6 @@
     object-fit: cover;
 }
 .signtext{
-    font-family: 'Inknut Antiqua';
     font-size: 76px;
 }
 .admin{
@@ -50,16 +46,14 @@
 
   /*👇👇👇 register 👇👇👇 */
 .rtext{
-    font-family: 'Inknut Antiqua';
     font-size: 48px;
-}
-.wtext{
-    font-family: 'Inknut Antiqua';
 }
 
 
   /* 👆👆👆 register 👆👆👆 */
 
+
+  /*👇👇👇 homepage 👇👇👇 */
   .svnav{
     margin: 0;
     height: 100%;
@@ -82,3 +76,17 @@
     height: 170px;
     width: 350px;
   }
+
+  /* 👆👆👆 homepage 👆👆👆 */
+
+
+
+
+
+@media (max-width:576px) {
+  .wel h1 {
+    font-size: x-large;
+  }
+  
+
+}

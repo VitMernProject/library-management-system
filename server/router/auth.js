@@ -37,9 +37,9 @@ router.get('/', (req, res) => {
 //async-await
 
 router.post('/register', async (req, res) =>{
-    const {name, email, phone, regno, password, cpassword } = req.body;
+    const {name, email, regno, password, cpassword } = req.body;
     
-    if(!name|| !email|| !phone|| !regno|| !password|| !cpassword ){
+    if(!name|| !email|| !regno|| !password|| !cpassword ){
         return res.status(422).json({error: "Please fill all fields"});
     }
 
@@ -51,7 +51,7 @@ router.post('/register', async (req, res) =>{
         }else if(password != cpassword ){
             return res.status(422).json({error: "Password and Confirm Password does not match!"})
         }else{
-            const user = new User({name, email, phone, regno, password, cpassword});
+            const user = new User({name, email, regno, password, cpassword});
             const userRegister= await user.save();
             if(userRegister){
                 res.status(201).json({msg: "Registered Successfuly! "});

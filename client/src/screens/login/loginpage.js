@@ -1,35 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import vitlogo from "../../assets/images/vitlogo.png";
 import {MdAlternateEmail} from "react-icons/md";
 import {RiLockPasswordFill} from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
 
-const loginPage = () => {
+const LoginPage = () => {
+
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
   return (
     <>
     <div className="vh-100 signin">
       <h2 className="rtext text-white text-center p-5">Login Page</h2>
-      <div className="bg-white mx-auto" style={{height:'35rem', width:'58rem', }}>
+      <div className="bg-white mx-auto h-auto w-auto">
         <div className="justify-content-center d-flex">
             <img src={vitlogo} alt="logo" className="logo" />
             <h4 className="wtext text-black justify-content-around p-5 fw-semibold">Welcome to Library Management System</h4>
         </div>
         <div className="justify-content-center d-flex mt-5">
           <form action="" method="post">
-            <div class="input-group mb-3" style={{width:"30rem"}}>
-              <span class="input-group-text border border-black" id="basic-addon1"><MdAlternateEmail/></span>
-              <input type="email" class="form-control border border-black" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"/>
+            <div className="input-group mb-3" style={{width:"30rem"}}>
+              <span className="input-group-text border border-black" id="basic-addon1"><MdAlternateEmail/></span>
+              <input type="email" className="form-control border border-black" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"/>
             </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text border border-black" id="basic-addon1"><RiLockPasswordFill/></span>
-              <input type="password" class="form-control border border-black" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"/>
+            <div className="input-group mb-3">
+              <span className="input-group-text border border-black" id="basic-addon1"><RiLockPasswordFill/></span>
+              <input type="password" className="form-control border border-black" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"/>
             </div>
           </form>
         </div>
-        <div class="text-center p-3">
-          <button type="button" class="btn btn-dark">Login</button>
+        <div className="text-center p-3">
+          <button type="button" className="btn btn-dark">Login</button>
         </div>
-        <div class="text-center p-2">
+        <div className="text-center p-2">
           <p>Didn't have an account? <NavLink to="/register"> Register Here</NavLink></p> 
         </div>
       </div>
@@ -40,4 +43,4 @@ const loginPage = () => {
   )
 }
 
-export default loginPage;
+export default LoginPage;
