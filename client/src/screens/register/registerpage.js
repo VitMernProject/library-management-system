@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const [style, setStyle] = useState('');
   const [user, setUser] = useState({
     name:"",email:"",regno:"",password:"",cpassword:""
   });
@@ -34,19 +35,26 @@ const RegisterPage = () => {
      }
 
   }
-  
+
+  function onClicked(){
+    if(window.screen.width < '576')
+      setStyle("regcardanimation");
+    else
+      setStyle("");
+  }
+
   return (
     <>
-    <div className="vh-100 signin">
+    <div className="wel">
       <h2 className="rtext text-white text-center p-5">Registration Page</h2>
-      <div className="bg-white mx-auto" style={{height:'35rem', width:'58rem', }}>
-        <div className="justify-content-center d-flex">
+      <div onClick={onClicked} className={`bg-white logincard ${style} rounded w-50 mx-auto d-flex flex-column align-items-center justify-content-center`}>
+        <div className="align-items-center justify-content-around d-flex">
             <img src={vitlogo} alt="logo" className="logo" />
             <h4 className="wtext text-black justify-content-around p-5 fw-semibold">Welcome to Library Management System</h4>
         </div>
-        <div className="justify-content-center d-flex mt-4">
+        <div className="w-75">
           <form method="POST" className='registration-form' id='registration-form'>
-            <div className="input-group mb-3" style={{width:"30rem"}}>
+            <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><BsFillPersonFill/></span>
               <input type="text" className="form-control border border-black" value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})} placeholder="Name" aria-label="Username" aria-describedby="basic-addon1" required/>
             </div>
