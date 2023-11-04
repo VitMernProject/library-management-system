@@ -1,10 +1,13 @@
 /*👇👇👇 welcome 👇👇👇 */
 
 .wel{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('./assets/images/welcome1.png'), lightgray 50% / cover no-repeat;
+  background-image:  url('./assets/images/welcome1.png');
     backdrop-filter: blur(2px);
-    object-fit: cover;
+    background-size: cover;
+    /* height: 100vmin; */
+    height:100vh;
   }
+
 .textwel{
     font-size: 60px;
     font-style: normal;
@@ -49,6 +52,21 @@
     font-size: 48px;
 }
 
+.regcardanimation{
+  transform: translateY(-130px);
+  animation-name: slide;
+  animation-duration: 2s;
+}
+
+@keyframes slide{
+  0%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(-130px);
+  }
+}
+
 
   /* 👆👆👆 register 👆👆👆 */
 
@@ -81,12 +99,27 @@
 
 
 
-
-
 @media (max-width:576px) {
+  .wel{
+    background-position: center;
+    height: calc(100vh + 250px);
+  }
   .wel h1 {
     font-size: x-large;
   }
+
+  .rtext{
+    font-size: 35px;
+  }
   
+  .signtext{
+    font-size: 56px;
+  }
+  .wtext{
+    font-size: 18px;
+  }
+  .logincard{
+    width: 75% !important;
+  }
 
 }

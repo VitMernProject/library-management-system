@@ -10,16 +10,16 @@ const LoginPage = () => {
   // const [password, setPassword] = useState('');
   return (
     <>
-    <div className="vh-100 signin">
+    <div className="vh-100 wel">
       <h2 className="rtext text-white text-center p-5">Login Page</h2>
-      <div className="bg-white mx-auto h-auto w-auto">
-        <div className="justify-content-center d-flex">
+      <div className="bg-white logincard mx-auto w-50 d-flex flex-column rounded justify-content-center align-items-center">
+        <div className="justify-content-around align-items-center d-flex">
             <img src={vitlogo} alt="logo" className="logo" />
-            <h4 className="wtext text-black justify-content-around p-5 fw-semibold">Welcome to Library Management System</h4>
+            <h4 className="wtext text-black justify-content-around py-3 fw-semibold">Welcome to Library Management System</h4>
         </div>
-        <div className="justify-content-center d-flex mt-5">
+        <div className="w-75 mt-3">
           <form action="" method="post">
-            <div className="input-group mb-3" style={{width:"30rem"}}>
+            <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><MdAlternateEmail/></span>
               <input type="email" className="form-control border border-black" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"/>
             </div>
