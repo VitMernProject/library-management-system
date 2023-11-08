@@ -1,18 +1,20 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
-const TopNaBbar = () => {
+const TopNavBar = () => {
   return (
-    <nav class="tpnav">
-            <div className="container">
-                <a class="navbar-brand" href="#">
-                <b>LIBRARY MANAGEMENT SYSTEM</b>
-                </a>
-            </div>
+    <nav className="tpnav d-flex justify-content-between p-3">
             <div>
-                
+                <NavLink className="lmslink h1">
+                Library Management System
+                </NavLink>
+            </div>
+            <div className='d-flex align-items-center'>
+               <img src='...' alt='...' className='img-thumbnail rounded-circle bg-light'></img>
+               <p className='lead'>Eswar Aditya</p>
             </div>
         </nav>
   )
 }
 
-export default TopNaBbar;
+export default TopNavBar;

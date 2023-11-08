@@ -4,8 +4,8 @@ ul {
     padding: 0;
     width: 250px;
     height: 645px;
-    background-color: #2b547e;
-    border: 1px solid #ffffff;
+    background-color: #1b1a1d;
+    /* border: 1px solid #ffffff; */
   }
   
   li a {
@@ -17,7 +17,7 @@ ul {
   
   li {
     text-align: left;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(124, 115, 115);
   }
   
   li:last-child {
@@ -25,18 +25,24 @@ ul {
   }
   
   li a.active {
-    background-color: #2b547e;
+    background-color: #000000 ;
     color: white;
   }
   
   li a:hover:not(.active) {
-    background-color: white;
+    background-color: rgb(109, 109, 109);
     color: rgb(0, 0, 0);
   }
 
   .tpnav{
-    background-color: black;
-    color: yellowgreen;
-    height: 50px;
-    font-size: xx-large;
+    background-color: #1c1c1c;
+    color:lightyellow;
+    /* height: 50px; */
+    /* font-size:x-large; */
+    text-transform:capitalize;
+    
+  }
+
+  .lmslink{
+    text-decoration: none;
   }
