@@ -67,18 +67,22 @@
   }
 
   .home{
-    background-color: #5d7080;
+    background-color: #2d2f30;
     backdrop-filter: blur(10px);
   }
   .box{
-    border: 1px solid black;
-    height: 350px;
-    width: 350px;
-    background-color:#89a8c7;
+    transform: translateZ(-20px);
+    z-index: 2;
+    background-color:#38373b;
+    color: rgb(166, 237, 237);
   }
 
   .prfpic{
     border-bottom: 1px solid black;
-    height: 170px;
-    width: 350px;
+  }
+
+  .dets{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
   }
