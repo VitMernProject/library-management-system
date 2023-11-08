@@ -1,7 +1,7 @@
 import React from 'react'
 import NavBar from '../components/sidenavbar';
 import TopNaBbar from '../components/topnavbar';
-
+import profilepic from "../../assets/images/profilepic.png"
 const Home = () => {
   return (
     <div className="svnav m-0">

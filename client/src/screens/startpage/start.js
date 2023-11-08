@@ -9,7 +9,7 @@ const StartPage = () => {
             <h2 className="text-white textwel p-3">Welcome to VIT-AP</h2> 
             <h1 className="text-white textonl">Online Library Management System</h1>
             <div className="d-flex flex-column justify-content-end ms-auto p-5 me-4" style={{textAlign:'right'}}> 
-              <NavLink to="/login"><h3>Click Here to Login</h3></NavLink>
+              <NavLink to="/signin"><h3>Click Here to Signin</h3></NavLink>
             </div>
         </div>
 
