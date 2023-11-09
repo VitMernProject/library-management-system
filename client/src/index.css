@@ -79,47 +79,22 @@
   }
 
   .home{
-    background-color: #5d7080;
+    background-color: #2d2f30;
     backdrop-filter: blur(10px);
   }
   .box{
-    border: 1px solid black;
-    height: 350px;
-    width: 350px;
-    background-color:#89a8c7;
+    transform: translateZ(-20px);
+    z-index: 2;
+    background-color:#38373b;
+    color: rgb(166, 237, 237);
   }
 
   .prfpic{
     border-bottom: 1px solid black;
-    height: 170px;
-    width: 350px;
   }
 
-  /* 👆👆👆 homepage 👆👆👆 */
-
-
-
-@media (max-width:576px) {
-  .wel{
-    background-position: center;
-    height: calc(100vh + 250px);
+  .dets{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
   }
-  .wel h1 {
-    font-size: x-large;
-  }
-
-  .rtext{
-    font-size: 35px;
-  }
-  
-  .signtext{
-    font-size: 56px;
-  }
-  .wtext{
-    font-size: 18px;
-  }
-  .logincard{
-    width: 75% !important;
-  }
-
-}

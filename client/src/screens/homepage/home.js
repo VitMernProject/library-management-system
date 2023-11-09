@@ -4,35 +4,36 @@ import TopNaBbar from '../components/topnavbar';
 import profilepic from "../../assets/images/profilepic.png"
 const Home = () => {
   return (
-    <div className="svnav row m-0">
+    <div className="svnav m-0">
         <div className='p-0'>
           <TopNaBbar/>
         </div>
-        <div className="col-2 p-0">
+        <div className='d-flex'>
+        <div className="p-0">
            <NavBar/>
         </div>
-        <div className="home col">
-            <div className='box'>
-              <form method=''>
-                <div className='prfpic'>
-                  <div className='text-center fs-4'>
-                    <b>G Eswar Aditya</b>
-                  </div>
-                  <div className='d-flex flex-column align-items-center'>
-                  <img src={profilepic} alt="pic" height={130} width={125} />
-                  </div>
-                  
-                </div>
-                <div className='dets'>
-                    <b className='m-2 p-2'>E-Mail ID : </b><br/>
-                    <b className='m-2 p-2'>Phone Number : </b><br/>
-                    <b className='m-2 p-2'>Registration Number : </b><br/>
-                    <b className='m-2 p-2'>Batch : </b><br/>
-                    <b className='m-2 p-2'>Branch : </b><br/>
-                </div>
-              </form>
-              
+        <div className="home w-100 d-flex justify-content-center">
+            <div className='box mt-5 rounded h-50 w-auto shadow-lg'>
+              <div className='prfpic h-50 d-flex flex-column justify-content-center align-items-center'>
+                    <img src="..." className="img-thumbnail rounded-circle h-75 w-25" alt=""/>
+                 <div>
+                  <b>G Eswar Aditya</b>
+                 </div>
+              </div>
+              <div className='dets p-3'>
+                  <div><b className='m-2'>E-Mail ID : </b></div>
+                  <div>aditya.21bce8184@vitapstudent.ac.in</div>
+                  <div><b className='m-2'>Phone Number : </b></div>
+                  <div>8919350084</div>
+                  <div><b className='m-2'>Registration Number : </b></div>
+                  <div>21BCE8184</div>
+                  <div><b className='m-2'>Batch : </b></div>
+                  <div>21st Batch</div>
+                  <div><b className='m-2'>Branch : </b></div>
+                  <div>CSE</div>
+              </div>
             </div>
+        </div>
         </div>
     </div>
   )

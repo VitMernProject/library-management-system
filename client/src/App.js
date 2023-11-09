@@ -8,7 +8,8 @@ import loginPage from "./screens/login/loginpage";
 import StartPage from "./screens/startpage/start";
 import Home from "./screens/homepage/home";
 import SideNavBar from "./screens/components/sidenavbar";
-import TopNaBbar from "./screens/components/topnavbar";
+import AllBooks from "./screens/homepage/allbooks";
+import TopNavBar from "./screens/components/topnavbar";
 
 const App = () => {
   return (
@@ -22,7 +23,8 @@ const App = () => {
         <Route path="/login" Component={loginPage}/>
         <Route path="/home" Component={Home}/>
         <Route path="/sidenavbar" Component={SideNavBar}/>
-        <Route path="/topnavbar" Component={TopNaBbar}/>
+        <Route path="/topnavbar" Component={TopNavBar}/>
+        <Route path="/allbooks" Component={AllBooks}/>
       </Routes>
     </>
   );
