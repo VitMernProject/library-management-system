@@ -1,0 +1,100 @@
+/*👇👇👇 welcome 👇👇👇 */
+
+.wel{
+  background-image:  url('./assets/images/welcome1.png');
+    backdrop-filter: blur(2px);
+    background-size: cover;
+    /* height: 100vmin; */
+    height:100vh;
+  }
+
+.textwel{
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.textonl{
+    font-size: 76px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+  /* 👆👆👆 welcome 👆👆👆 */
+
+  /*👇👇👇 signin 👇👇👇 */
+.signin{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('./assets/images/welcome1.png'), lightgray 50% / cover no-repeat;
+    backdrop-filter: blur(2px);
+    object-fit: cover;
+}
+.signtext{
+    font-size: 76px;
+}
+.admin{
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(2px);
+}
+
+.student{
+    background: rgba(255, 255, 255, 0.30);
+    backdrop-filter: blur(2px);
+}
+/* .adminimg{
+    height: auto;
+    width: auto;
+} */
+  /* 👆👆👆 signin 👆👆👆 */
+
+
+  /*👇👇👇 register 👇👇👇 */
+.rtext{
+    font-size: 48px;
+}
+
+.regcardanimation{
+  transform: translateY(-130px);
+  animation-name: slide;
+  animation-duration: 2s;
+}
+
+@keyframes slide{
+  0%{
+    transform: translateY(0px);
+  }
+  100%{
+    transform: translateY(-130px);
+  }
+}
+
+
+  /* 👆👆👆 register 👆👆👆 */
+
+
+  /*👇👇👇 homepage 👇👇👇 */
+  .svnav{
+    margin: 0;
+    height: 100%;
+    overflow-y: hidden;
+  }
+
+  .home{
+    background-color: #2d2f30;
+    backdrop-filter: blur(10px);
+  }
+  .box{
+    transform: translateZ(-20px);
+    z-index: 2;
+    background-color:#38373b;
+    color: rgb(166, 237, 237);
+  }
+
+  .prfpic{
+    border-bottom: 1px solid black;
+  }
+
+  .dets{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5px;
+  }
