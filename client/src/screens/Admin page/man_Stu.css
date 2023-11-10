@@ -5,3 +5,7 @@
 .heading {
     color:whitesmoke;
 }
+
+.books{
+    overflow: auto !important;
+}

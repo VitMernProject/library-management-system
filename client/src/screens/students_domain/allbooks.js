@@ -13,14 +13,14 @@ const AllBooks = () => {
           <div className="p-0">
             <NavBar/>
           </div>
-          <div className="main-section w-100  p-3">
+          <div className="main-section w-100 p-3">
             <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
               All Books
             </div>
             <div className='p-0 pb-2'>
               <Search/>
             </div>
-            <div className="table-responsive-md mt-1">
+            <div className="h-75 table-responsive-md mt-1 overflow-auto">
               <table className="table  table-hover table-dark">
                 <thead className="table-secondary">
                   <tr>
