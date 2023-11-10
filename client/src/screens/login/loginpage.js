@@ -2,12 +2,35 @@ import React, {useState} from 'react';
 import vitlogo from "../../assets/images/vitlogo.png";
 import {MdAlternateEmail} from "react-icons/md";
 import {RiLockPasswordFill} from "react-icons/ri";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  const loginUser = async (e) =>{
+    e.preventDefault();
+
+    const res = await fetch('/signin', {
+      method: 'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      }, 
+      body:JSON.stringify({
+        email,password 
+      }),
+    });
+    
+    const data = await res.json();
+    if(res.status === 200){
+      window.alert("Login Successful!");
+      navigate("/home");
+    }else{
+      window.alert(data.error);
+    }
+  }
+
   return (
     <>
     <div className="vh-100 wel">
@@ -18,19 +41,19 @@ const LoginPage = () => {
             <h4 className="wtext text-black justify-content-around py-3 fw-semibold">Welcome to Library Management System</h4>
         </div>
         <div className="w-75 mt-3">
-          <form action="" method="post">
+          <form method="POST">
             <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><MdAlternateEmail/></span>
-              <input type="email" className="form-control border border-black" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1"/>
+              <input type="email" className="form-control border border-black" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" aria-describedby="basic-addon1"/>
             </div>
             <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><RiLockPasswordFill/></span>
-              <input type="password" className="form-control border border-black" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1"/>
+              <input type="password" className="form-control border border-black" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} aria-label="Password" aria-describedby="basic-addon1"/>
             </div>
           </form>
         </div>
         <div className="text-center p-3">
-          <button type="button" className="btn btn-dark">Login</button>
+          <input type="Submit" className="btn btn-dark" value="Login" onClick={loginUser}/>
         </div>
         <div className="text-center p-2">
           <p>Didn't have an account? <NavLink to="/register"> Register Here</NavLink></p> 
