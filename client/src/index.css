@@ -110,3 +110,7 @@ body{
     background-color:#38373b;
     color: rgb(166, 237, 237);
   }
+
+  .booksTable{
+    height: calc(100vh - 35vh);
+  }

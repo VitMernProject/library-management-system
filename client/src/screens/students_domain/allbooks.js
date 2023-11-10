@@ -20,7 +20,7 @@ const AllBooks = () => {
             <div className='p-0 pb-2'>
               <Search/>
             </div>
-            <div className="h-75 table-responsive-md mt-1 overflow-auto">
+            <div className="booksTable table-responsive-md mt-1 overflow-auto">
               <table className="table  table-hover table-dark">
                 <thead className="table-secondary">
                   <tr>
