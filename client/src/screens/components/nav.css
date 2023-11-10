@@ -46,3 +46,20 @@ ul {
   .lmslink{
     text-decoration: none;
   }
+
+.line{
+  height: 3px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  width: 30px;
+}
+
+.sidebar{
+  width: 40px;
+  transition-duration: 1s;
+  transition-property: width;
+}
+
+.sidebar:hover{
+  width: 230px;
+}
