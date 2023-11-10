@@ -1,6 +1,7 @@
 import "./Issue_req.css";
 import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
+import Search from "../components/search";
 import React from "react";
 
 function Issue_req() {
@@ -16,6 +17,9 @@ function Issue_req() {
         <div className="main-section w-100  p-3">
           <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
             Student Requested to Admin to issue these Book
+          </div>
+          <div className='p-0 pb-2'>
+              <Search/>
           </div>
           <div className="table-responsive-md mt-1">
             <table className="table  table-hover table-dark">
