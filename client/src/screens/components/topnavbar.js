@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import profilepic from '../../assets/images/profilepic.png';
 
 const TopNavBar = () => {
   return (
@@ -10,8 +11,17 @@ const TopNavBar = () => {
                 </NavLink>
             </div>
             <div className='d-flex align-items-center'>
-               <img src='...' alt='...' className='img-thumbnail rounded-circle bg-light'></img>
-               <p className='lead'>Eswar Aditya</p>
+               
+               <li className="nav-item dropdown list-group-item">
+                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src={profilepic} width={50} alt='...' className='img-thumbnail rounded-circle bg-light h-auto me-2'></img>
+                    G Eswar Aditya
+                  </a>
+                  <ul className="dropdown-menu h-auto w-auto bg-dark ">
+                    <li><a className="dropdown-item text-info" href="#">Logout</a></li>
+                    {/* <li><hr class="dropdown-divider" /></li> */}
+                  </ul>
+                </li>
             </div>
         </nav>
   )
