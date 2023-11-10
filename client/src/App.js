@@ -6,10 +6,11 @@ import SignInPage from "./screens/signin/Signin";
 import registerPage from "./screens/register/registerpage";
 import loginPage from "./screens/login/loginpage";
 import StartPage from "./screens/startpage/start";
-import Home from "./screens/homepage/home";
+import Home from "./screens/students_domain/home";
 import SideNavBar from "./screens/components/sidenavbar";
-import AllBooks from "./screens/homepage/allbooks";
+import AllBooks from "./screens/students_domain/allbooks";
 import TopNavBar from "./screens/components/topnavbar";
+import HelpMsg from "./screens/students_domain/help_msg";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/sidenavbar" Component={SideNavBar}/>
         <Route path="/topnavbar" Component={TopNavBar}/>
         <Route path="/allbooks" Component={AllBooks}/>
+        <Route path="/help_msg" Component={HelpMsg}/>
       </Routes>
     </>
   );

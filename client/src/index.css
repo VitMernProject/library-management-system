@@ -1,5 +1,9 @@
 /*👇👇👇 welcome 👇👇👇 */
 
+body{
+  background-color: #2d2f30;
+}
+
 .wel{
   background-image:  url('./assets/images/welcome1.png');
     backdrop-filter: blur(2px);
@@ -97,4 +101,11 @@
     display: grid;
     grid-template-columns: auto auto;
     gap: 5px;
+  }
+
+  /*👇👇👇 help_msg 👇👇👇 */
+
+  .msgbox{
+    background-color:#38373b;
+    color: rgb(166, 237, 237);
   }
