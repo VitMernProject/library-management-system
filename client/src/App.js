@@ -13,6 +13,7 @@ import TopNavBar from "./screens/components/topnavbar";
 import HelpMsg from "./screens/students_domain/help_msg";
 import ManStu from "./screens/Admin page/man_Stu";
 import Issue_req from "./screens/Admin page/Issue_req";
+import Search from "./screens/components/search";
 
 const App = () => {
   return (
@@ -28,9 +29,10 @@ const App = () => {
         <Route path="/sidenavbar" Component={SideNavBar}/>
         <Route path="/topnavbar" Component={TopNavBar}/>
         <Route path="/allbooks" Component={AllBooks}/>
-        <Route path="/help_msg" Component={HelpMsg}/>
+        <Route path="/message" Component={HelpMsg}/>
         <Route path="/manageStudents" Component={ManStu}/>
-        <Route path="/Issue Request" Component={Issue_req}/>
+        <Route path="/issueRequest" Component={Issue_req}/>
+        <Route path="/search" Component={Search}/>
       </Routes>
     </>
   );
