@@ -15,15 +15,15 @@ const ManStu = () => {
         <div className="p-0">
           <NavBar />
         </div>
-        <div className="main-section w-100  p-3">
+        <div className="main-section w-100 p-3">
           <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
             Manage Student
           </div>
           <div className='p-0 pb-2'>
             <Search/>
           </div>
-          <div className="table-responsive-md mt-1">
-            <table className="table  table-hover table-dark">
+          <div className="books table-responsive-md mt-1">
+            <table className="table table-hover table-dark">
               <thead className="table-secondary">
                 <tr>
                   <th>S.NO</th>
