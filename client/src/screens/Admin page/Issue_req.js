@@ -21,7 +21,7 @@ function Issue_req() {
           <div className='p-0 pb-2'>
               <Search/>
           </div>
-          <div className="table-responsive-md mt-1">
+          <div className="overflow-auto h-50 table-responsive-md mt-1">
             <table className="table  table-hover table-dark">
               <thead className="table-secondary">
                 <tr>

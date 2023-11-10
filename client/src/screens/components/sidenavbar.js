@@ -5,7 +5,6 @@ import {BiMessageDetail} from 'react-icons/bi';
 import {PiBooksLight} from 'react-icons/pi';
 import {LiaBookSolid} from 'react-icons/lia';
 import {HiOutlineLogout} from 'react-icons/hi';
-import TopNavBar from './topnavbar.js';
 import { NavLink } from 'react-router-dom';
 
 const SideNavBar = () => {
