@@ -8,7 +8,7 @@ ul {
     /* border: 1px solid #ffffff; */
   }
   
-  li a {
+  .a {
     display: block;
     color: #ffffff;
     padding: 8px 16px;
@@ -24,12 +24,12 @@ ul {
     border-bottom: none;
   }
   
-  li a.active {
+   .a.active {
     background-color: #000000 ;
     color: white;
   }
   
-  li a:hover:not(.active) {
+   .a:hover:not(.active) {
     background-color: rgb(109, 109, 109);
     color: rgb(0, 0, 0);
   }
