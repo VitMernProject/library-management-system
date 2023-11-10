@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/allbooks" Component={AllBooks}/>
         <Route path="/help_msg" Component={HelpMsg}/>
         <Route path="/manageStudents" Component={ManStu}/>
-        <Route path="/Issue Request" Component={Issue_req}/>
+        <Route path="/issueRequest" Component={Issue_req}/>
       </Routes>
     </>
   );
