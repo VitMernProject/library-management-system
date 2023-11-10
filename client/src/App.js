@@ -11,6 +11,8 @@ import SideNavBar from "./screens/components/sidenavbar";
 import AllBooks from "./screens/students_domain/allbooks";
 import TopNavBar from "./screens/components/topnavbar";
 import HelpMsg from "./screens/students_domain/help_msg";
+import ManStu from "./screens/Admin page/man_Stu";
+import Issue_req from "./screens/Admin page/Issue_req";
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/topnavbar" Component={TopNavBar}/>
         <Route path="/allbooks" Component={AllBooks}/>
         <Route path="/help_msg" Component={HelpMsg}/>
+        <Route path="/manageStudents" Component={ManStu}/>
+        <Route path="/Issue Request" Component={Issue_req}/>
       </Routes>
     </>
   );
