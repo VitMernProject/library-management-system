@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import profilepic from '../../assets/images/profilepic.png';
 
-const TopNavBar = () => {
+const TopNavBar = (props) => {
   return (
     <nav className="tpnav d-flex justify-content-between p-3">
             <div className='d-flex align-items-center'>
@@ -21,7 +21,7 @@ const TopNavBar = () => {
                <li className="nav-item dropdown list-group-item">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src={profilepic} width={50} alt='...' className='img-thumbnail rounded-circle bg-light h-auto me-2'></img>
-                    G Eswar Aditya
+                    {props.name}
                   </a>
                   <ul className="dropdown-menu h-auto w-auto bg-dark ">
                     <li><a className="dropdown-item text-info" href="#">Logout</a></li>
