@@ -3,6 +3,7 @@ import vitlogo from "../../assets/images/vitlogo.png";
 import {MdAlternateEmail} from "react-icons/md";
 import {RiLockPasswordFill} from "react-icons/ri";
 import { NavLink, useNavigate } from 'react-router-dom';
+import GlobalConstants from '../../constants/global_constants';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -24,12 +25,17 @@ const LoginPage = () => {
     
     const data = await res.json();
     if(res.status === 200){
-      window.alert("Login Successful!");
+      console.log(data);
+      GlobalConstants.uid = data.uid;
+      window.alert("Login Successful!");  console.log(GlobalConstants.uid);
+
       navigate("/home");
     }else{
       window.alert(data.error);
     }
   }
+
+  // console.log(GlobalConstants.uid);
 
   return (
     <>
