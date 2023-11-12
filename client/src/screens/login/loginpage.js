@@ -22,13 +22,11 @@ const LoginPage = () => {
         email,password 
       }),
     });
-    
     const data = await res.json();
     if(res.status === 200){
       console.log(data);
-      GlobalConstants.uid = data.uid;
-      window.alert("Login Successful!");  console.log(GlobalConstants.uid);
-
+      localStorage.setItem('uid', data.uid);
+      window.alert("Login Successful!");
       navigate("/home");
     }else{
       window.alert(data.error);

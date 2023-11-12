@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react'
 import NavBar from '../components/sidenavbar';
 import TopNaBbar from '../components/topnavbar';
 import profilepic from "../../assets/images/profilepic.png"
-import GlobalConstants from '../../constants/global_constants';
 
 const Home = () => {
   const [data, setData] = useState({});
   
   const fetchdetails = async()=>{
-    const res = await fetch(`/getUserDetails?uid=${GlobalConstants.uid}`,{
+    const uid = localStorage.getItem('uid');
+    const res = await fetch(`/getUserDetails?uid=${uid}`,{
       method:'GET',
-            
     })
     const response = await res.json();
     setData(response.data);
@@ -32,7 +31,7 @@ const Home = () => {
         <div className="home w-100 d-flex justify-content-center">
             <div className='box mt-5 rounded h-50 w-auto shadow-lg'>
               <div className='prfpic h-50 d-flex flex-column justify-content-center align-items-center'>
-                    <img src="..." className="img-thumbnail rounded-circle h-75 w-25" alt=""/>
+                    <img src={profilepic} className="img-thumbnail rounded-circle h-75 w-auto" alt=""/>
                  <div>
                   <b>{data.name}</b>
                  </div>
