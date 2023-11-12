@@ -1,8 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import profilepic from '../../assets/images/profilepic.png';
 
 const TopNavBar = (props) => {
+
+  const navigate = useNavigate();
+  function userLogout(){
+    localStorage.clear();
+    console.log("logged out");
+    navigate("/login")
+  }
+
   return (
     <nav className="tpnav d-flex justify-content-between p-3">
             <div className='d-flex align-items-center'>
@@ -24,7 +32,7 @@ const TopNavBar = (props) => {
                     {props.name}
                   </a>
                   <ul className="dropdown-menu h-auto w-auto bg-dark ">
-                    <li><a className="dropdown-item text-info" href="#">Logout</a></li>
+                    <li><a className="dropdown-item text-info" onClick={userLogout}>Logout</a></li>
                     {/* <li><hr class="dropdown-divider" /></li> */}
                   </ul>
                 </li>
