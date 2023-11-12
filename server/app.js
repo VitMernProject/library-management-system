@@ -13,6 +13,7 @@ app.use(express.json());
 
 //we link router file
 app.use(require('./router/auth'));
+app.use(require('./router/user'));
 
 const PORT = process.env.PORT;
 

@@ -12,7 +12,7 @@ function HelpMsg() {
           <div className="p-0">
             <NavBar/>
           </div>
-          <div className='w-100 d-flex justify-content-center'>
+          <div className='main-section w-100 d-flex justify-content-center'>
             <div className="w-auto p-5 d-flex flex-column align-items-center"> 
               <div className='msgbox p-4 rounded shadow w-auto'>
                 <div classname="h1"><p>Message</p></div>
