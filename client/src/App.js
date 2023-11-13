@@ -15,6 +15,7 @@ import PrivateRouter from "./privateRouter";
 import Addbook from "./screens/AddBook/AddBook";
 import AllIssued from "./screens/allissued/AllIssued";
 import CurrentlyIssued from "./screens/currentlyissued/CurrentlyIssued";
+import Recommended from "./screens/recommended books/recommended";
 const App = () => {
   return (
     <>
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/addBook" element={<PrivateRouter type={2} Component={Addbook}/>}/>
         <Route path="/allissued" element={<PrivateRouter type={2} Component={AllIssued}/>}/>
         <Route path="/currentlyissued" element={<PrivateRouter type={2} Component={CurrentlyIssued}/>}/>
+        <Route path="/recommended" element={<PrivateRouter type={2} Component={Recommended}/>}/>
       </Routes>
     </>
   );
