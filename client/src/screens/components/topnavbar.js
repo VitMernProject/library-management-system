@@ -27,12 +27,12 @@ const TopNavBar = (props) => {
             </div>
             <div className='d-flex align-items-center'>
                <li className="nav-item dropdown list-group-item">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src={profilepic} width={50} alt='...' className='img-thumbnail rounded-circle bg-light h-auto me-2'></img>
                     {props.name}
                   </a>
                   <ul className="dropdown-menu h-auto w-auto bg-dark ">
-                    <li><a className="dropdown-item text-info" onClick={userLogout}>Logout</a></li>
+                    <li><button className="dropdown-item text-info" onClick={userLogout}>Logout</button></li>
                     {/* <li><hr class="dropdown-divider" /></li> */}
                   </ul>
                 </li>
