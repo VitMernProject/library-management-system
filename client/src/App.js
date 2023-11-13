@@ -12,7 +12,10 @@ import HelpMsg from "./screens/students_domain/help_msg";
 import ManStu from "./screens/Admin page/man_Stu";
 import Issue_req from "./screens/Admin page/Issue_req";
 import PrivateRouter from "./privateRouter";
-
+import Addbook from "./screens/AddBook/AddBook";
+import AllIssued from "./screens/allissued/AllIssued";
+import CurrentlyIssued from "./screens/currentlyissued/CurrentlyIssued";
+import Recommended from "./screens/recommended books/recommended";
 const App = () => {
   return (
     <>
@@ -28,6 +31,10 @@ const App = () => {
         <Route path="/message" element={<PrivateRouter type={2} Component={HelpMsg}/>}/>
         <Route path="/manageStudents" element={<PrivateRouter type={2} Component={ManStu}/>}/>
         <Route path="/issueRequest" element={<PrivateRouter type={2} Component={Issue_req}/>}/>
+        <Route path="/addBook" element={<PrivateRouter type={2} Component={Addbook}/>}/>
+        <Route path="/allissued" element={<PrivateRouter type={2} Component={AllIssued}/>}/>
+        <Route path="/currentlyissued" element={<PrivateRouter type={2} Component={CurrentlyIssued}/>}/>
+        <Route path="/recommended" element={<PrivateRouter type={2} Component={Recommended}/>}/>
       </Routes>
     </>
   );
