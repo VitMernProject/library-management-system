@@ -15,7 +15,7 @@ const SideNavBar = () => {
                   <li><NavLink className="a" to="/home"><AiOutlineHome className='me-3' />Home</NavLink></li>
                   <li><NavLink className="a" to="/message"><BiMessageDetail className='me-3' />Messages</NavLink></li>
                   <li><NavLink className="a" to="/allbooks"><PiBooksLight className='me-3' />All Books</NavLink></li>
-                  {(role === "student")?<li><NavLink className="a" to="/home"><LiaBookSolid className='me-3' />Recommended Books</NavLink></li>:<></>}
+                  {(role === "student")?<li><NavLink className="a" to="/recommended"><LiaBookSolid className='me-3' />Recommended Books</NavLink></li>:<></>}
                   {(role === "student")?<li><NavLink className="a" to="/currentlyissued"><AiOutlineBook className='me-3' />Currently Issued Books</NavLink></li>:<></>}
                   {(role === "admin")?<li><NavLink className="a" to="/addBook"><AiOutlineBook className='me-3' />Add Book</NavLink></li>:<></>}
                   {(role === "admin")?<li><NavLink className="a" to="/manageStudents"><HiOutlineLogout className='me-3' />Manage Students</NavLink></li>:<></>}
