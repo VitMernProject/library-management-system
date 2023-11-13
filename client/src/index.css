@@ -92,6 +92,7 @@ body{
     z-index: 2;
     background-color:#38373b;
     color: rgb(166, 237, 237);
+    height: fit-content;
   }
 
   .prfpic{
