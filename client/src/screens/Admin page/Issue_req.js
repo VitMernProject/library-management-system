@@ -40,7 +40,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -52,7 +52,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -64,7 +64,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -76,7 +76,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -88,7 +88,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -100,7 +100,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -112,7 +112,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
@@ -124,7 +124,7 @@ function Issue_req() {
                   <td>CSE</td>
                   <td>
                     <button className="btn m-2 text-light bg-success">
-                      Accepted
+                      Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>

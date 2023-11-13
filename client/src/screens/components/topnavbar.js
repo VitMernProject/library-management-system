@@ -32,7 +32,7 @@ const TopNavBar = (props) => {
                     {props.name}
                   </a>
                   <ul className="dropdown-menu h-auto w-auto bg-dark ">
-                    <li><button className="dropdown-item text-info" onClick={userLogout}>Logout</button></li>
+                    <li><a className="dropdown-item text-info" onClick={userLogout}>Logout</a></li>
                     {/* <li><hr class="dropdown-divider" /></li> */}
                   </ul>
                 </li>
