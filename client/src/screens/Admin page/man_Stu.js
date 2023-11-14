@@ -3,6 +3,7 @@ import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const ManStu = () => {
   return (
@@ -18,7 +19,7 @@ const ManStu = () => {
           <div className="heading mt-3 d-flex flex-row mb-3 justify-content-center h1">
             Manage Student
             <div className="ms-auto">
-              <button className="btn btn-outline-light">Add Student</button>
+              <button className="btn btn-outline-light"><NavLink className="text-decoration-none hover-text" to={'/register'}>Add Student</NavLink></button>
             </div>
           </div>
 

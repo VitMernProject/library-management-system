@@ -1,7 +1,18 @@
 .main-section {
     background-color: #2d2f30;
     color: white;
+    /* padding: 89px 15px 10px 15px; */
+    /* padding-top: 89px;
+    padding-bottom: 10px; */
+    /* height: 100vh; */
+    /* overflow: auto; */
 }
 .heading {
     color:whitesmoke;
+}
+.hover-text{
+    color:white;
+}
+.hover-text:hover{
+    color:black;
 }
