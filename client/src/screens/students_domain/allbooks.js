@@ -110,7 +110,7 @@ const AllBooks = () => {
                     <td>21</td>
                     <td>AVAILABLE</td>
                     <td>
-                      <button className="btn text-light bg-success">Issuee</button>
+                      <button className="btn text-light bg-success">Issue</button>
                     </td>
                   </tr>
                   <tr>
@@ -120,7 +120,7 @@ const AllBooks = () => {
                     <td>13</td>
                     <td>AVAILABLE</td>
                     <td>
-                      <button className="btn text-light bg-success">Issuee</button>
+                      <button className="btn text-light bg-success">Issue</button>
                     </td>
                   </tr>
                 </tbody>
