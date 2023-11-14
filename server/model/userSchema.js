@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    phoneno: {
+        type: Number,
+        require: true
+    },
     password: {
         type: String,
         require: true
@@ -22,6 +26,9 @@ const userSchema = new mongoose.Schema({
     cpassword: {
         type: String,
         require: true
+    },
+    role: {
+        type: String
     },
     tokens: [
         {
