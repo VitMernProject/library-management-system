@@ -30,7 +30,7 @@ function Issue_req() {
                   <th>Author</th>
                   <th>Student ID</th>
                   <th>Student Name</th>
-                  <th>Student Branch</th>
+                  <th>Branch</th>
                   <th>Actions</th>
                 </tr>
               </thead>

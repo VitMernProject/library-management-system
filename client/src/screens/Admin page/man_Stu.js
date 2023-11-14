@@ -30,8 +30,8 @@ const ManStu = () => {
               <thead className="table-secondary">
                 <tr>
                   <th>S.NO</th>
-                  <th>Name</th>
-                  <th>Registration page</th>
+                  <th>Student Name</th>
+                  <th>Student ID</th>
                   <th>Branch</th>
                   <th>Join Year</th>
                   <th>Actions</th>
