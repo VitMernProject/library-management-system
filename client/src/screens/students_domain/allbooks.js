@@ -13,7 +13,7 @@ const AllBooks = () => {
           <div className="p-0">
             <NavBar/>
           </div>
-          <div className="main-section w-100 p-3">
+          <div className="main-section w-100">
             <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
               All Books
             </div>
@@ -21,7 +21,7 @@ const AllBooks = () => {
               <Search/>
             </div>
             <div className="booksTable table-responsive-md mt-1 overflow-auto">
-              <table className="table  table-hover table-dark">
+              <table className="table  table-hover table-dark ">
                 <thead className="table-secondary">
                   <tr>
                     <th>S.NO</th>
@@ -39,7 +39,7 @@ const AllBooks = () => {
                     <td>Data Structure</td>
                     <td>Martin Joz</td>
                     <td>15</td>
-                    <td></td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -50,6 +50,7 @@ const AllBooks = () => {
                     <td>React in Action</td>
                     <td>Mark Tielens Thomas</td>
                     <td>11</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -60,6 +61,7 @@ const AllBooks = () => {
                     <td>Practical Node.js</td>
                     <td>Azat Mardan</td>
                     <td>15</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -70,6 +72,7 @@ const AllBooks = () => {
                     <td>Learning Node</td>
                     <td>Shelley Powers</td>
                     <td>5</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -80,6 +83,7 @@ const AllBooks = () => {
                     <td>Head first SQL</td>
                     <td>Lynn Beighley</td>
                     <td>11</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -90,6 +94,7 @@ const AllBooks = () => {
                     <td>SQL Cookbook</td>
                     <td>Anthony Molinaro</td>
                     <td>0</td>
+                    <td>CS-03 105</td>
                     <td>NOT AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -100,6 +105,7 @@ const AllBooks = () => {
                     <td>Full Stack React</td>
                     <td>Nate Murray</td>
                     <td>7</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -110,6 +116,7 @@ const AllBooks = () => {
                     <td>Learning React</td>
                     <td>Alex Banks</td>
                     <td>21</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
@@ -120,6 +127,73 @@ const AllBooks = () => {
                     <td>Effective Java</td>
                     <td>Joshua Bloch</td>
                     <td>13</td>
+                    <td>CS-03 105</td>
+                    <td>AVAILABLE</td>
+                    <td>
+                      <button className="btn text-light bg-success">Issue</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Effective Java</td>
+                    <td>Joshua Bloch</td>
+                    <td>13</td>
+                    <td>CS-03 105</td>
+                    <td>AVAILABLE</td>
+                    <td>
+                      <button className="btn text-light bg-success">Issue</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Effective Java</td>
+                    <td>Joshua Bloch</td>
+                    <td>13</td>
+                    <td>CS-03 105</td>
+                    <td>AVAILABLE</td>
+                    <td>
+                      <button className="btn text-light bg-success">Issue</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Effective Java</td>
+                    <td>Joshua Bloch</td>
+                    <td>13</td>
+                    <td>CS-03 105</td>
+                    <td>AVAILABLE</td>
+                    <td>
+                      <button className="btn text-light bg-success">Issue</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Effective Java</td>
+                    <td>Joshua Bloch</td>
+                    <td>13</td>
+                    <td>CS-03 105</td>
+                    <td>AVAILABLE</td>
+                    <td>
+                      <button className="btn text-light bg-success">Issue</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Effective Java</td>
+                    <td>Joshua Bloch</td>
+                    <td>13</td>
+                    <td>CS-03 105</td>
+                    <td>AVAILABLE</td>
+                    <td>
+                      <button className="btn text-light bg-success">Issue</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Effective Java</td>
+                    <td>Joshua Bloch</td>
+                    <td>13</td>
+                    <td>CS-03 105</td>
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
