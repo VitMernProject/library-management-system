@@ -29,10 +29,10 @@ const Home = () => {
            <NavBar/>
         </div>
         <div className="home w-100 d-flex justify-content-center">
-            <div className='box mt-5 rounded h-50 w-auto shadow-lg'>
+            <div className='box mt-5 rounded w-auto shadow-lg'>
               <div className='prfpic h-50 d-flex flex-column justify-content-center align-items-center'>
-                    <img src={profilepic} className="img-thumbnail rounded-circle h-75 w-auto" alt=""/>
-                 <div>
+                    <img src={profilepic} className="img-thumbnail rounded-circle h-auto w-50 mt-2" alt=""/>
+                 <div className='m-2'>
                   <b>{data.name}</b>
                  </div>
               </div>

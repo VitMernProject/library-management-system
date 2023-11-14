@@ -84,7 +84,7 @@ router.post('/signin', async (req, res) =>{
             const isMatch = await bcrypt.compare(password, userLogin.password);
 
             token = await userLogin.generateAuthToken();
-            console.log(token);
+            // console.log(token);
 
             res.cookie("jwtoken", token, {
                 expires:new Date(Date.now() + 25892000000),
@@ -94,7 +94,7 @@ router.post('/signin', async (req, res) =>{
             if (!isMatch){
                 return res.status(400).json({ error: 'Invalid Credentials (password)' });
             }else{
-                res.json({msg:"Login Successful! ",uid:userLogin._id});
+                res.json({msg:"Login Successful! ",uid:userLogin._id, role:userLogin.role});
             }
         }else{
             return res.status(400).json({ error: 'Invalid Credentials' });

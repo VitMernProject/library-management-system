@@ -27,7 +27,7 @@ const TopNavBar = (props) => {
             </div>
             <div className='d-flex align-items-center'>
                <li className="nav-item dropdown list-group-item">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src={profilepic} width={50} alt='...' className='img-thumbnail rounded-circle bg-light h-auto me-2'></img>
                     {props.name}
                   </a>

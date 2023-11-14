@@ -4,7 +4,6 @@ import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
 import React from "react";
 
-
 const ManStu = () => {
   return (
     <>
@@ -16,11 +15,15 @@ const ManStu = () => {
           <NavBar />
         </div>
         <div className="main-section w-100 p-3">
-          <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
+          <div className="heading mt-3 d-flex flex-row mb-3 justify-content-center h1">
             Manage Student
+            <div className="ms-auto">
+              <button className="btn btn-outline-light">Add Student</button>
+            </div>
           </div>
-          <div className='p-0 pb-2'>
-            <Search/>
+
+          <div className="p-0 pb-2">
+            <Search />
           </div>
           <div className="booksTable overflow-auto table-responsive-md mt-1">
             <table className="table table-hover table-dark">
@@ -42,6 +45,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -52,6 +58,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -62,6 +71,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -72,6 +84,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -82,6 +97,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -92,6 +110,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -102,6 +123,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2021</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
@@ -112,6 +136,9 @@ const ManStu = () => {
                   <td>CSE</td>
                   <td>2024</td>
                   <td>
+                    <button className="btn me-2 text-light bg-success">
+                      Edit
+                    </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
                 </tr>
