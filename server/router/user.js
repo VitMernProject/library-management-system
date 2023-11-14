@@ -19,6 +19,7 @@ router.get('/getUserDetails', async(req,res)=>{
                 email:userExist.email, 
                 regno:userExist.regno,
                 role:userExist.role ?? '',
+                phoneno:userExist.phoneno,
             }});
         }
         else{

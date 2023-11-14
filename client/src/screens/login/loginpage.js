@@ -26,7 +26,7 @@ const LoginPage = () => {
       console.log(data);
       localStorage.setItem('uid', data.uid);
       localStorage.setItem('role', data.role);
-      window.alert("Login Successful!");
+      // window.alert("Login Successful!");
       navigate("/home");
     }else{
       window.alert(data.error);
@@ -59,9 +59,9 @@ const LoginPage = () => {
         <div className="text-center p-3">
           <input type="Submit" className="btn btn-dark" value="Login" onClick={loginUser}/>
         </div>
-        <div className="text-center p-2">
+        {/* <div className="text-center p-2">
           <p>Didn't have an account? <NavLink to="/register"> Register Here</NavLink></p> 
-        </div>
+        </div> */}
       </div>
     </div>
     </>

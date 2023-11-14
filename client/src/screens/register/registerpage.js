@@ -9,19 +9,19 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const [style, setStyle] = useState('');
   const [user, setUser] = useState({
-    name:"",email:"",regno:"",password:"",cpassword:""
+    name:"",email:"",regno:"",phoneno:"",password:"",cpassword:""
   });
 
   const PostData = async (e) =>{
     e.preventDefault();
-    const { name, email, regno, password, cpassword} = user;
+    const { name, email, regno, phoneno, password, cpassword} = user;
      const res = await fetch("/register", {
       method: "POST",
       headers:{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name, email, regno, password, cpassword
+        name, email, regno, phoneno, password, cpassword
       }),
      });
      const data = await res.json();
@@ -65,6 +65,10 @@ const RegisterPage = () => {
             <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><MdOutlineStickyNote2/></span>
               <input type="text" className="form-control border border-black" value={user.regno} onChange={(e)=>setUser({...user,regno:e.target.value})} placeholder="Regno" aria-label="Registration" aria-describedby="basic-addon1" required/>
+            </div>
+            <div className="input-group mb-3">
+              <span className="input-group-text border border-black" id="basic-addon1"><MdOutlineStickyNote2/></span>
+              <input type="text" className="form-control border border-black" value={user.phoneno} onChange={(e)=>setUser({...user,phoneno:e.target.value})} placeholder="Phone Number" aria-label="Registration" aria-describedby="basic-addon1" required/>
             </div>
             <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><RiLockPasswordFill/></span>
