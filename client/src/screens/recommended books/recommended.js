@@ -28,6 +28,7 @@ const Recommended = () => {
                     <th>Book ID</th>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Copies</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -37,6 +38,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Data Structure</td>
                     <td>Martin Joz</td>
+                    <td>10</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                   </tr>
                   <tr>
@@ -44,6 +46,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>React in Action</td>
                     <td>Mark Tielens Thomas</td>
+                    <td>1</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                     
                   </tr>
@@ -52,6 +55,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Practical Node.js</td>
                     <td>Azat Mardan</td>
+                    <td>0</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                     
                   </tr>
@@ -60,6 +64,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Learning Node</td>
                     <td>Shelley Powers</td>
+                    <td>15</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                     
                   </tr>
@@ -68,19 +73,21 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Head first SQL</td>
                     <td>Lynn Beighley</td>
+                    <td>22</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div className="booksTable table-responsive-md mt-1 overflow-auto">
-              <table className="table  table-hover table-dark">
+            <table className="table  table-hover table-dark">
                 <thead className="table-secondary">
                   <tr>
                     <th>S.NO</th>
                     <th>Book ID</th>
                     <th>Title</th>
                     <th>Author</th>
+                    <th>Copies</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -90,6 +97,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Data Structure</td>
                     <td>Martin Joz</td>
+                    <td>10</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                   </tr>
                   <tr>
@@ -97,6 +105,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>React in Action</td>
                     <td>Mark Tielens Thomas</td>
+                    <td>1</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                     
                   </tr>
@@ -105,6 +114,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Practical Node.js</td>
                     <td>Azat Mardan</td>
+                    <td>0</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                     
                   </tr>
@@ -113,6 +123,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Learning Node</td>
                     <td>Shelley Powers</td>
+                    <td>15</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                     
                   </tr>
@@ -121,6 +132,7 @@ const Recommended = () => {
                     <td>CSE2001</td>
                     <td>Head first SQL</td>
                     <td>Lynn Beighley</td>
+                    <td>22</td>
                     <td><button className="btn text-light bg-success">Add Book</button></td>
                   </tr>
                 </tbody>
