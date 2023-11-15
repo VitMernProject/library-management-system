@@ -3,6 +3,7 @@ import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
 import './addbook.css'
 import {useNavigate} from 'react-router-dom'
+
 const Addbook = () => {
   const navigate = useNavigate();
   const [book,setBook] = useState({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
@@ -20,10 +21,12 @@ const Addbook = () => {
       }),
     });
     const data = await res.json();
-    if (data.status===200){
+    console.log(res);
+    if (res.status===200){
       setBook({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
       document.getElementById("regsubmit").removeAttribute("disabled");
       window.alert("Book added successfully!!");
+      navigate("/allbooks");
     }
     else{
       setBook({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
