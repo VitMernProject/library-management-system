@@ -17,7 +17,7 @@ const RegisterPage = () => {
 
   const PostData = async (e) => {
     e.preventDefault();
-    document.getElementsByClassName("regsubmit").item(0).setAttribute("disabled", "true");
+    document.getElementById('regsubmit').setAttribute("disabled", "true");
     const { name, email, regno, phoneno, password, cpassword } = user;
     const res = await fetch("/register", {
       method: "POST",
@@ -32,11 +32,11 @@ const RegisterPage = () => {
     if (data.status === 200) {
       window.alert("Registration Successful!");
       console.log("Registration Successful!");
-      document.getElementsByClassName("regsubmit").item(0).removeAttribute("disabled");
+      document.getElementById("regsubmit").removeAttribute("disabled");
       navigate("/manageStudents");
     } else {
       window.alert(data.error);
-      document.getElementsByClassName("regsubmit").item(0).removeAttribute("disabled");
+      document.getElementById("regsubmit").removeAttribute("disabled");
     }
   }
 
@@ -92,7 +92,7 @@ const RegisterPage = () => {
                       <input type="password" className="form-control border border-black" value={user.cpassword} onChange={(e) => setUser({ ...user, cpassword: e.target.value })} placeholder="Confirm Password" aria-label="cPassword" aria-describedby="basic-addon1" required />
                     </div>
                     <div className='d-flex justify-content-center'>
-                      <button type="submit" className="btn btn-dark form-submit regsubmit">register</button>
+                      <button type="submit" id='regsubmit' className="btn btn-dark form-submit">register</button>
                     </div>
                 </form>
                 </div>

@@ -9,6 +9,7 @@ const Addbook = () => {
   const [book,setBook] = useState({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
   const postdata = async(e) => {
     e.preventDefault();
+    document.getElementById('regsubmit').setAttribute("disabled", "true");
     const {bookid,title,author,copies,status,branch,location} = book;
     const res = await fetch("/addbook",{
       method:"POST",
@@ -23,11 +24,13 @@ const Addbook = () => {
     console.log(res);
     if (res.status===200){
       setBook({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
+      document.getElementById("regsubmit").removeAttribute("disabled");
       window.alert("Book added successfully!!");
       navigate("/allbooks");
     }
     else{
       setBook({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
+      document.getElementById("regsubmit").removeAttribute("disabled");
       window.alert(data.message);
     }
   }
@@ -74,7 +77,7 @@ const Addbook = () => {
                 <input placeholder="Branch" required value={book.branch} onChange={(e) => setBook({...book,branch:e.target.value})} type="text" className="form-control"/>
               </div>
               <div className="d-flex justify-content-end">
-              <button type="submit" className="btn btn-success">Add Book</button>
+              <button id='regsubmit' type="submit" className="btn btn-success">Add Book</button>
               </div>
             </form>
           </div>
