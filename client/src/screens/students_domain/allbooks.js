@@ -15,6 +15,11 @@ const AllBooks = () => {
   
   useEffect(()=>{fetchdetails()
   },[]);
+
+  function bookAdd(bookData){
+    console.log(bookData);
+  }
+
   return (
     <div className="svnav m-0">
       <div className='p-0'>
@@ -59,7 +64,7 @@ const AllBooks = () => {
                         <td>{val.location}</td>
                         <td>{val.status}</td>
                         <td>
-                          <button className="btn text-light bg-success">Issue</button>
+                          <div className="btn text-light bg-success" onClick={()=>bookAdd(val)}>Issue</div>
                         </td>
                       </tr>
                     )
