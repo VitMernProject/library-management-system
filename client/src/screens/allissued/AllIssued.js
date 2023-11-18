@@ -32,6 +32,7 @@ const AllIssued = () => {
                     <th>Student Name</th>
                     <th>Issued date</th>
                     <th>Due date</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -44,6 +45,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>2</td>
@@ -54,6 +56,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>3</td>
@@ -64,6 +67,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>4</td>
@@ -74,6 +78,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>5</td>
@@ -84,6 +89,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>6</td>
@@ -94,6 +100,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>7</td>
@@ -104,6 +111,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Pending</td>
                   </tr>
                   <tr>
                     <td>8</td>
@@ -114,6 +122,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Returned</td>
                   </tr>
                   <tr>
                     <td>9</td>
@@ -124,6 +133,7 @@ const AllIssued = () => {
                     <td>Karthik</td>
                     <td>12-08-2023</td>
                     <td>30-08-2023</td>
+                    <td>Returned</td>
                   </tr>
                 </tbody>
               </table>

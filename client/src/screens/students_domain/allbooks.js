@@ -15,6 +15,23 @@ const AllBooks = () => {
   
   useEffect(()=>{fetchdetails()
   },[]);
+
+  const bookAdd = async(bookData) => {
+    console.log(bookData);
+    const response = await fetch('/issueBook',{
+      method: 'POST',
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:{
+        book: bookData._id,
+        student : localStorage.getItem('uid')
+      }
+    })
+    const data = await response.json();
+    console.log(data);
+  }
+
   return (
     <div className="svnav m-0">
       <div className='p-0'>
@@ -59,7 +76,7 @@ const AllBooks = () => {
                         <td>{val.location}</td>
                         <td>{val.status}</td>
                         <td>
-                          <button className="btn text-light bg-success">Issue</button>
+                          <div className="btn text-light bg-success" onClick={()=>bookAdd(val)}>Issue</div>
                         </td>
                       </tr>
                     )
