@@ -15,22 +15,26 @@ const AllBooks = () => {
   
   useEffect(()=>{fetchdetails()
   },[]);
-
-  const bookAdd = async(bookData) => {
-    console.log(bookData);
-    const response = await fetch('/issueBook',{
+  
+  const postdata = async (b_data) =>{
+    const res = await fetch('/issuebook', {
       method: 'POST',
       headers:{
-        "Content-Type":"application/json",
-      },
-      body:{
-        book: bookData._id,
+        'Content-Type': 'application/json'
+      }, 
+      body:JSON.stringify({
+        book : b_data._id,
         student : localStorage.getItem('uid')
+      }),
+      })
+      const data = await res.json();
+      if(res.status === 200){
+        console.log(data);
+      }else{
+        window.alert(data.error);
       }
-    })
-    const data = await response.json();
-    console.log(data);
-  }
+    }
+  
 
   return (
     <div className="svnav m-0">
@@ -41,7 +45,7 @@ const AllBooks = () => {
           <div className="p-0">
             <NavBar/>
           </div>
-          <div className="main-section w-100">
+          <div className="main-section px-3 w-100">
             <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
               All Books
             </div>
@@ -76,7 +80,7 @@ const AllBooks = () => {
                         <td>{val.location}</td>
                         <td>{val.status}</td>
                         <td>
-                          <div className="btn text-light bg-success" onClick={()=>bookAdd(val)}>Issue</div>
+                          <div className="btn text-light bg-success" onClick={()=>postdata(val)}>Issue</div>
                         </td>
                       </tr>
                     )
