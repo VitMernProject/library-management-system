@@ -4,17 +4,14 @@ const IssueSchema = new mongoose.Schema({
     book:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref:"AllBooks"
+        ref:"allbook"
     },
     student:{
         type: mongoose.Schema.Types.ObjectId,
         required:true,
-        ref:'USER'
+        ref:'user'
     },
     issueDate:{
-        type: Date
-    },
-    requestedDate:{
         type: Date,
         default: Date.now()
     },
@@ -28,5 +25,5 @@ const IssueSchema = new mongoose.Schema({
     }
 })
 
-const Issue = mongoose.model('ISSUE', IssueSchema);
+const Issue = mongoose.model('issue', IssueSchema);
 module.exports = Issue;
