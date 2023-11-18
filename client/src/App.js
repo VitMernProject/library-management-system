@@ -16,6 +16,7 @@ import Addbook from "./screens/AddBook/AddBook";
 import AllIssued from "./screens/allissued/AllIssued";
 import CurrentlyIssued from "./screens/currentlyissued/CurrentlyIssued";
 import Recommended from "./screens/recommended books/recommended";
+
 const App = () => {
   return (
     <>
@@ -24,7 +25,7 @@ const App = () => {
         <Route path="/" element={<PrivateRouter type={1} Component={StartPage}/>} />
         <Route path="*" element={<Navigate replace to={"/"} />} />
         <Route path="/signin" element={<PrivateRouter type={1} Component={SignInPage}/>}/>
-        <Route path="/register" element={<PrivateRouter type={1} Component={registerPage}/>}/>
+        <Route path="/register" element={<PrivateRouter type={2} Component={registerPage}/>}/>
         <Route path="/login" element={<PrivateRouter type={1} Component={loginPage}/>}/>
         <Route path="/home" element={<PrivateRouter type={2} Component={Home}/>}/>
         <Route path="/allbooks" element={<PrivateRouter type={2} Component={AllBooks}/>}/>
