@@ -12,28 +12,36 @@ const LoginPage = () => {
   const loginUser = async (e) =>{
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
-
-    const res = await fetch('/signin', {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json'
-      }, 
-      body:JSON.stringify({
-        email,password 
-      }),
-    });
-    const data = await res.json();
-    if(res.status === 200){
-      console.log(data);
-      localStorage.setItem('uid', data.uid);
-      localStorage.setItem('role', data.role);
-      // window.alert("Login Successful!");
+    document.getElementById('txt').innerHTML = "please wait ...";
+    try{
+      const res = await fetch('/signin', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        }, 
+        body:JSON.stringify({
+          email,password 
+        }),
+      }).catch((e)=>console.log(e));
+      const data = await res.json();
+      if(res.status === 200){
+        console.log(data);
+        localStorage.setItem('uid', data.uid);
+        localStorage.setItem('role', data.role);
+        // window.alert("Login Successful!");
+        navigate("/home");
+      }else{
+        window.alert(data.error);
+      }
       document.getElementById("regsubmit").removeAttribute("disabled");
-      navigate("/home");
-    }else{
+      document.getElementById('txt').innerHTML = "";
+    }catch(err){
+      document.getElementById('txt').innerHTML = "Network Error ...";
       document.getElementById("regsubmit").removeAttribute("disabled");
-      window.alert(data.error);
+      console.log(err);
     }
+    
+    
   }
 
   // console.log(GlobalConstants.uid);
@@ -59,6 +67,7 @@ const LoginPage = () => {
             </div>
             <div className="text-center p-3">
               <button id='regsubmit' type="Submit" className="btn btn-dark">Login</button>
+              <p id='txt'></p>
             </div>
           </form>
         </div>
