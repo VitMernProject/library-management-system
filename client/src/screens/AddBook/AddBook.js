@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 const Addbook = () => {
   const navigate = useNavigate();
   const [book,setBook] = useState({bookid:"",title:"",author:"",copies:"",location:"",branch:"",status:""});
+  
   const postdata = async(e) => {
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
