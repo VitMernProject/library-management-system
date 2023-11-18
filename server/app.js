@@ -14,6 +14,8 @@ app.use(express.json());
 //we link router file
 app.use(require('./router/auth'));
 app.use(require('./router/user'));
+app.use(require('./router/book'));
+app.use(require('./router/issue'));
 
 const PORT = process.env.PORT;
 

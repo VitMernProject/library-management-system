@@ -11,26 +11,37 @@ const LoginPage = () => {
 
   const loginUser = async (e) =>{
     e.preventDefault();
-
-    const res = await fetch('/signin', {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json'
-      }, 
-      body:JSON.stringify({
-        email,password 
-      }),
-    });
-    const data = await res.json();
-    if(res.status === 200){
-      console.log(data);
-      localStorage.setItem('uid', data.uid);
-      localStorage.setItem('role', data.role);
-      window.alert("Login Successful!");
-      navigate("/home");
-    }else{
-      window.alert(data.error);
+    document.getElementById('regsubmit').setAttribute("disabled", "true");
+    document.getElementById('txt').innerHTML = "please wait ...";
+    try{
+      const res = await fetch('/signin', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        }, 
+        body:JSON.stringify({
+          email,password 
+        }),
+      }).catch((e)=>console.log(e));
+      const data = await res.json();
+      if(res.status === 200){
+        console.log(data);
+        localStorage.setItem('uid', data.uid);
+        localStorage.setItem('role', data.role);
+        // window.alert("Login Successful!");
+        navigate("/home");
+      }else{
+        window.alert(data.error);
+      }
+      document.getElementById("regsubmit").removeAttribute("disabled");
+      document.getElementById('txt').innerHTML = "";
+    }catch(err){
+      document.getElementById('txt').innerHTML = "Network Error ...";
+      document.getElementById("regsubmit").removeAttribute("disabled");
+      console.log(err);
     }
+    
+    
   }
 
   // console.log(GlobalConstants.uid);
@@ -45,7 +56,7 @@ const LoginPage = () => {
             <h4 className="wtext text-black justify-content-around py-3 fw-semibold">Welcome to Library Management System</h4>
         </div>
         <div className="w-75 mt-3">
-          <form method="POST">
+          <form method="POST" onSubmit={loginUser}>
             <div className="input-group mb-3">
               <span className="input-group-text border border-black" id="basic-addon1"><MdAlternateEmail/></span>
               <input type="email" className="form-control border border-black" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" aria-describedby="basic-addon1"/>
@@ -54,14 +65,15 @@ const LoginPage = () => {
               <span className="input-group-text border border-black" id="basic-addon1"><RiLockPasswordFill/></span>
               <input type="password" className="form-control border border-black" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} aria-label="Password" aria-describedby="basic-addon1"/>
             </div>
+            <div className="text-center p-3">
+              <button id='regsubmit' type="Submit" className="btn btn-dark">Login</button>
+              <p id='txt'></p>
+            </div>
           </form>
         </div>
-        <div className="text-center p-3">
-          <input type="Submit" className="btn btn-dark" value="Login" onClick={loginUser}/>
-        </div>
-        <div className="text-center p-2">
+        {/* <div className="text-center p-2">
           <p>Didn't have an account? <NavLink to="/register"> Register Here</NavLink></p> 
-        </div>
+        </div> */}
       </div>
     </div>
     </>

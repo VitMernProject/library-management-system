@@ -40,7 +40,7 @@ const Home = () => {
                   <div><b className='m-2'>E-Mail ID : </b></div>
                   <div>{data.email}</div>
                   <div><b className='m-2'>Phone Number : </b></div>
-                  <div>8919350084</div>
+                  <div>{data.phoneno}</div>
                   <div><b className='m-2'>Registration Number : </b></div>
                   <div>{data.regno}</div>
                   <div><b className='m-2'>Batch : </b></div>
