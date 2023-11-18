@@ -24,7 +24,7 @@ const AllBooks = () => {
           <div className="p-0">
             <NavBar/>
           </div>
-          <div className="main-section w-100">
+          <div className="main-section px-3 w-100">
             <div className="heading mt-3 d-flex mb-3 justify-content-center h1">
               All Books
             </div>
