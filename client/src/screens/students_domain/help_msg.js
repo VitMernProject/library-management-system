@@ -23,6 +23,7 @@ function HelpMsg() {
                     <div className='d-flex justify-content-between py-2'>  
                       <button type="reset" class="btn btn-outline-info">Reset</button>
                       <button type="submit" class="btn btn-outline-info">Submit</button>
+                      <button type='submit' class='btn btn-outline-info'></button>
                     </div>
                   </form>
               </div>

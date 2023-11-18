@@ -28,7 +28,6 @@ const AllBooks = () => {
                     <th>Title</th>
                     <th>Author</th>
                     <th>Copies</th>
-                    <th>Book Alignment</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -38,8 +37,7 @@ const AllBooks = () => {
                     <td>1</td>
                     <td>Data Structure</td>
                     <td>Martin Joz</td>
-                    <td>15</td>
-                    <td></td>
+                    <td>15</td> 
                     <td>AVAILABLE</td>
                     <td>
                       <button className="btn text-light bg-success">Issue</button>
