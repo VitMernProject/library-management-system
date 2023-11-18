@@ -16,8 +16,20 @@ const AllBooks = () => {
   useEffect(()=>{fetchdetails()
   },[]);
 
-  function bookAdd(bookData){
+  const bookAdd = async(bookData) => {
     console.log(bookData);
+    const response = await fetch('/issueBook',{
+      method: 'POST',
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:{
+        book: bookData._id,
+        student : localStorage.getItem('uid')
+      }
+    })
+    const data = await response.json();
+    console.log(data);
   }
 
   return (
