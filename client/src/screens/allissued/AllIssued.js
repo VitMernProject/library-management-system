@@ -1,8 +1,20 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
 import Search from '../components/search'
+
 const AllIssued = () => {
+  const [data,setData] = useState([]);
+  const fetchdetails = async()=>{
+    const res = await fetch(`/issueBook`,{
+      method:'GET',
+    })
+    const response = await res.json();
+    setData(response.data);
+  }
+
+  useEffect(()=>{fetchdetails()
+  },[]);
   return (
     <div>
       <div className="svnav m-0">
@@ -36,105 +48,20 @@ const AllIssued = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>CSE2001</td>
-                    <td>Data Structure</td>
-                    <td>Martin Joz</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>CSE2001</td>
-                    <td>React in Action</td>
-                    <td>Mark Tielens Thomas</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>CSE2001</td>
-                    <td>Practical Node.js</td>
-                    <td>Azat Mardan</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>CSE2001</td>
-                    <td>Learning Node</td>
-                    <td>Shelley Powers</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>CSE2001</td>
-                    <td>Head first SQL</td>
-                    <td>Lynn Beighley</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>CSE2001</td>
-                    <td>SQL Cookbook</td>
-                    <td>Anthony Molinaro</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>CSE2001</td>
-                    <td>Full Stack React</td>
-                    <td>Nate Murray</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Pending</td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td>CSE2001</td>
-                    <td>Learning React</td>
-                    <td>Alex Banks</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Returned</td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>CSE2001</td>
-                    <td>Effective Java</td>
-                    <td>Joshua Bloch</td>
-                    <td>21BCE7894</td>
-                    <td>Karthik</td>
-                    <td>12-08-2023</td>
-                    <td>30-08-2023</td>
-                    <td>Returned</td>
-                  </tr>
+                {
+                    data.map((val,index)=>
+                      <tr>
+                        <td>{index +1}</td>
+                        <td>{val.book.bookid}</td>
+                        <td>{val.book.title}</td>
+                        <td>{val.book.author}</td>
+                        <td>{val.student.regno}</td>
+                        <td>{val.student.name}</td>
+                        <td>{val.issueDate.toString().substring(0,10)}</td>
+                        <td>{val.returnDate}</td>
+                        <td>{val.status}</td>
+                        </tr>
+                    )}
                 </tbody>
               </table>
             </div>
