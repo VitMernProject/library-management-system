@@ -2,9 +2,24 @@ import "./Issue_req.css";
 import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
-import React from "react";
+import {React,useState,useEffect,fetchdetails} from "react";
+import { PiRocketLaunchFill } from "react-icons/pi";
 
-function Issue_req() {
+
+
+const Issue_req=()=> {
+    const [data,setData] = useState([]);
+    const fetchdetails = async()=>{
+      const res = await fetch(`/getIssue_req`,{
+        method:'GET',
+      })
+      const response = await res.json();
+      setData(response.data);
+    } 
+    
+    useEffect(()=>{fetchdetails()
+    },[]);
+
   return (
     <>
       <div>
@@ -154,6 +169,6 @@ function Issue_req() {
       </div>
     </>
   );
-}
+  }
 
 export default Issue_req;
