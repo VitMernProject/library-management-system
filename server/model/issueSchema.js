@@ -16,7 +16,8 @@ const IssueSchema = new mongoose.Schema({
         default: Date.now()
     },
     returnDate:{
-        type: Date
+        type: Date,
+        default: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000)
     },
     status:{
         type: String,
