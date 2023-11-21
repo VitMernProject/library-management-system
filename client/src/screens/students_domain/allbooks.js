@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import NavBar from '../components/sidenavbar';
-import TopNaBbar from '../components/topnavbar';
-import Search from '../components/search';
+import React, { useState, useEffect } from "react";
+import NavBar from "../components/sidenavbar";
+import TopNaBbar from "../components/topnavbar";
+import Search from "../components/search";
 
 const AllBooks = () => {
-  const [data,setData] = useState([]);
-  const fetchdetails = async()=>{
-    const res = await fetch(`/getAllBooks`,{
-      method:'GET',
-    })
+  const [data, setData] = useState([]);
+  const fetchdetails = async () => {
+    const res = await fetch(`/getAllBooks`, {
+      method: "GET",
+    });
     const response = await res.json();
     setData(response.data);
   }
@@ -38,8 +38,8 @@ const AllBooks = () => {
 
   return (
     <div className="svnav m-0">
-      <div className='p-0'>
-        <TopNaBbar/>
+      <div className="p-0">
+        <TopNaBbar />
       </div>
       <div className='d-flex'>
           <div className="p-0">
@@ -91,7 +91,7 @@ const AllBooks = () => {
         </div> 
       </div>       
     </div>
-    )
-}
+  );
+};
 
 export default AllBooks;
