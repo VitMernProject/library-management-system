@@ -2,9 +2,23 @@ import "./Issue_req.css";
 import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
-import React from "react";
+import { React, useState, useEffect, fetchdetails } from "react";
+import { PiRocketLaunchFill } from "react-icons/pi";
 
-function Issue_req() {
+const Issue_req = () => {
+  const [data, setData] = useState([]);
+  const fetchdetails = async () => {
+    const res = await fetch(`/issueBook?status=Pending`, {
+      method: "GET",
+    });
+    const response = await res.json();
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    fetchdetails();
+  }, []);
+
   return (
     <>
       <div>
@@ -35,118 +49,24 @@ function Issue_req() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Ds3042</td>
-                  <td>Read in Action</td>
-                  <td>Mark Tielens Thomas</td>
-                  <td>21BCE7736</td>
-                  <td>Tadikamalla Sudheshna</td>
-                  <td>CSE</td>
-                  <td>
+                {
+                  data.map((val, index)=> 
+                  <tr>
+                    <td>{val.book.bookid}</td>
+                    <td>{val.book.title}</td>
+                    <td>{val.book.author}</td>
+                    <td>{val.student.regno}</td>
+                    <td>{val.student.name}</td>
+                    <td>cse</td>
+                    <td>
                     <button className="btn m-2 text-light bg-success">
                       Accept
                     </button>
                     <button className="btn text-light bg-danger">Remove</button>
                   </td>
-                </tr>
-                <tr>
-                  <td>AS2042</td>
-                  <td>Effective C</td>
-                  <td>Robert C.Seacord</td>
-                  <td>21BCE8184</td>
-                  <td>Eswar Aditya</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Dp3044</td>
-                  <td>SQL CookBook</td>
-                  <td>Anthony Molinaro</td>
-                  <td>21BCE7947</td>
-                  <td>Sowjanya</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ds3050</td>
-                  <td>JavaScript Programming basics</td>
-                  <td>Nathan CLARK</td>
-                  <td>21BCE7894</td>
-                  <td>Karthik</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ps60242</td>
-                  <td>Internet of Things: a hands-on approach</td>
-                  <td>Bahga, A.</td>
-                  <td>21BCE8314</td>
-                  <td>Harshini</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Cr2983</td>
-                  <td>Database system concepts</td>
-                  <td>Silberschatz, A.</td>
-                  <td>21BCE7194</td>
-                  <td>Rahul</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>As4042</td>
-                  <td>Dynamic programming and optimal control Vol. I</td>
-                  <td>Bertserkas, D.P.</td>
-                  <td>21BCE7907</td>
-                  <td>Basera</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Ds2747</td>
-                  <td>Data structures: a programming approach with C</td>
-                  <td>Mishra, K.</td>
-                  <td>21BCE7738</td>
-                  <td>Tadikamalla Suraj</td>
-                  <td>CSE</td>
-                  <td>
-                    <button className="btn m-2 text-light bg-success">
-                      Accept
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
+
+                  </tr>
+                  )}
               </tbody>
             </table>
           </div>
@@ -154,6 +74,6 @@ function Issue_req() {
       </div>
     </>
   );
-}
+};
 
 export default Issue_req;
