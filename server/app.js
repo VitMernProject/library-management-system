@@ -16,6 +16,7 @@ app.use(require('./router/auth'));
 app.use(require('./router/user'));
 app.use(require('./router/book'));
 app.use(require('./router/issue'));
+app.use(require('./router/msg'));
 
 const PORT = process.env.PORT;
 
