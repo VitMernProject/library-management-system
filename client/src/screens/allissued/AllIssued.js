@@ -58,7 +58,7 @@ const AllIssued = () => {
                         <td>{val.student.regno}</td>
                         <td>{val.student.name}</td>
                         <td>{val.issueDate.toString().substring(0,10)}</td>
-                        <td>{val.returnDate}</td>
+                        <td>{val.returnDate.toString().substring(0,10)}</td>
                         <td>{val.status}</td>
                         </tr>
                     )}

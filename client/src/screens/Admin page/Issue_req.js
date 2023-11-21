@@ -8,7 +8,7 @@ import { PiRocketLaunchFill } from "react-icons/pi";
 const Issue_req = () => {
   const [data, setData] = useState([]);
   const fetchdetails = async () => {
-    const res = await fetch(`/issueBook`, {
+    const res = await fetch(`/issueBook?status=Pending`, {
       method: "GET",
     });
     const response = await res.json();
