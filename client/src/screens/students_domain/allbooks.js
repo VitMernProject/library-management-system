@@ -3,6 +3,7 @@ import NavBar from "../components/sidenavbar";
 import TopNaBbar from "../components/topnavbar";
 import Search from "../components/search";
 
+
 const AllBooks = () => {
   const [data, setData] = useState([]);
   const fetchdetails = async () => {
@@ -80,7 +81,7 @@ const AllBooks = () => {
                         <td>{val.location}</td>
                         <td>{val.status}</td>
                         <td>
-                          <div className="btn text-light bg-success" onClick={()=>postdata(val)}>Issue</div>
+                          <div className="btn text-light bg-success" onClick={localStorage.getItem('role')==='student' ?()=>postdata(val):()=>null}>{localStorage.getItem('role')==='student' ?'Issue':'Edit'}</div>
                         </td>
                       </tr>
                     )
