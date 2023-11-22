@@ -2,8 +2,7 @@ import "./Issue_req.css";
 import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
-import { React, useState, useEffect, fetchdetails } from "react";
-import { PiRocketLaunchFill } from "react-icons/pi";
+import { React, useState, useEffect } from "react";
 
 const Issue_req = () => {
   const [data, setData] = useState([]);
@@ -18,6 +17,24 @@ const Issue_req = () => {
   useEffect(() => {
     fetchdetails();
   }, []);
+
+  const removeRequest=async(val,index)=> {
+    document.getElementsByClassName('regsubmit').item(index).setAttribute("disabled","true");
+    await fetch(`/issueBook?id=${val._id}`,{
+      method:"DELETE",
+    });
+    fetchdetails();
+    document.getElementsByClassName('regsubmit').item(index).removeAttribute("disabled");
+  }
+
+  const approveRequest=async(val,index)=> {
+    document.getElementsByClassName('regsubmit').item(index).setAttribute("disabled","true");
+    await fetch(`/issueBook?id=${val._id}`,{
+      method:"PUT",
+    });
+    fetchdetails();
+    document.getElementsByClassName('regsubmit').item(index).removeAttribute("disabled");
+  }
 
   return (
     <>
@@ -59,10 +76,10 @@ const Issue_req = () => {
                     <td>{val.student.name}</td>
                     <td>cse</td>
                     <td>
-                    <button className="btn m-2 text-light bg-success">
+                    <button className="btn m-2 text-light bg-success" onClick={()=>approveRequest(val,index)}>
                       Accept
                     </button>
-                    <button className="btn text-light bg-danger">Remove</button>
+                    <button className="btn text-light bg-danger regsubmit" onClick={()=>removeRequest(val,index)}>Remove</button>
                   </td>
 
                   </tr>
