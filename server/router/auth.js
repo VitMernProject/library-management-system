@@ -37,9 +37,9 @@ router.get('/', (req, res) => {
 //async-await
 
 router.post('/register', async (req, res) =>{
-    const {name, email, regno, phoneno, password, cpassword } = req.body;
+    const {name, email, regno, branch, batch, phoneno, password, cpassword } = req.body;
     
-    if(!name|| !email|| !regno|| !phoneno || !password|| !cpassword ){
+    if(!name|| !email|| !regno|| !branch|| !batch|| !phoneno || !password|| !cpassword ){
         return res.status(422).json({error: "Please fill all fields"});
     }
 
@@ -51,7 +51,7 @@ router.post('/register', async (req, res) =>{
         }else if(password != cpassword ){
             return res.status(422).json({error: "Password and Confirm Password does not match!"})
         }else{
-            const user = new User({name, email, regno, phoneno ,password, cpassword, role:'student'});
+            const user = new User({name, email, regno, branch, batch, phoneno ,password, cpassword, role:'student'});
             const userRegister= await user.save();
             if(userRegister){
                 res.status(201).json({msg: "Registered Successfuly! "});
@@ -83,13 +83,13 @@ router.post('/signin', async (req, res) =>{
         if(userLogin){
             const isMatch = await bcrypt.compare(password, userLogin.password);
 
-            token = await userLogin.generateAuthToken();
+            // token = await userLogin.generateAuthToken();
             // console.log(token);
 
-            res.cookie("jwtoken", token, {
-                expires:new Date(Date.now() + 25892000000),
-                httpOnly : true
-            });
+            // res.cookie("jwtoken", token, {
+            //     expires:new Date(Date.now() + 25892000000),
+            //     httpOnly : true
+            // });
 
             if (!isMatch){
                 return res.status(400).json({ error: 'Invalid Credentials (password)' });

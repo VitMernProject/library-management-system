@@ -15,6 +15,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    branch:{
+        type: String,
+        required: true
+    },
+    batch:{
+        type: String,
+        required: true
+    },
     phoneno: {
         type: Number,
         require: true
