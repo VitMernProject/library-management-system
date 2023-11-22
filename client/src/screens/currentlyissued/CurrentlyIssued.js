@@ -55,8 +55,8 @@ const CurrentlyIssued = () => {
                         <td>{val.book.bookid}</td>
                         <td>{val.book.title}</td>
                         <td>{val.book.author}</td>
-                        <td>{val.issueDate}</td>
-                        <td>{val.returnDate}</td>
+                        <td>{val.issueDate.toString().substring(0,10)}</td>
+                        <td>{val.returnDate.toString().substring(0,10)}</td>
                       </tr>
                     )
                   }

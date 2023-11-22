@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/sidenavbar";
 import TopNaBbar from "../components/topnavbar";
 import Search from "../components/search";
+import { useNavigate } from "react-router-dom";
 
 
 const AllBooks = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const fetchdetails = async () => {
     const res = await fetch(`/getAllBooks`, {
@@ -14,10 +16,12 @@ const AllBooks = () => {
     setData(response.data);
   }
   
-  useEffect(()=>{fetchdetails()
+  useEffect(()=>{
+    fetchdetails()
   },[]);
   
   const postdata = async (b_data) =>{
+    document.querySelectorAll(".regsubmit").forEach((s)=>s.setAttribute("disabled","true"))
     const res = await fetch('/issuebook', {
       method: 'POST',
       headers:{
@@ -31,9 +35,12 @@ const AllBooks = () => {
       const data = await res.json();
       if(res.status === 200){
         console.log(data);
+        document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
+        fetchdetails();
       }else{
-        window.alert(data.error);
-      }
+        document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
+        window.alert(data.msg);
+      }  
     }
   
 
@@ -81,7 +88,12 @@ const AllBooks = () => {
                         <td>{val.location}</td>
                         <td>{val.status}</td>
                         <td>
-                          <div className="btn text-light bg-success" onClick={localStorage.getItem('role')==='student' ?()=>postdata(val):()=>null}>{localStorage.getItem('role')==='student' ?'Issue':'Edit'}</div>
+                        {
+                          localStorage.getItem('role')==='student' ?
+                          (val.copies > 0)? <button className="btn text-light bg-success regsubmit"  onClick={()=>postdata(val)}>Issue</button>:<></>
+                          :<button className="btn text-light bg-success regsubmit"  onClick={()=>null}>Edit</button>
+                        }
+                        
                         </td>
                       </tr>
                     )
