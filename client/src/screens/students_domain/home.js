@@ -44,9 +44,9 @@ const Home = () => {
                   <div><b className='m-2'>Registration Number : </b></div>
                   <div>{data.regno}</div>
                   <div><b className='m-2'>Batch : </b></div>
-                  <div>21st Batch</div>
+                  <div>{data.batch}</div>
                   <div><b className='m-2'>Branch : </b></div>
-                  <div>CSE</div>
+                  <div>{data.branch}</div>
               </div>
             </div>
         </div>

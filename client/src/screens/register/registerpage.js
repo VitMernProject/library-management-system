@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import vitlogo from "../../assets/images/vitlogo.png";
 import { BsFillPersonFill } from "react-icons/bs";
-import { MdAlternateEmail, MdOutlineStickyNote2 } from "react-icons/md";
+import { MdAlternateEmail, MdOutlineStickyNote2, MdBatchPrediction } from "react-icons/md";
 import { RiLockPasswordFill, RiLockPasswordLine } from "react-icons/ri";
+import { FiPhone } from "react-icons/fi";
+import { FaCodeBranch } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import TopNavBar from '../components/topnavbar';
 import SideNavBar from '../components/sidenavbar';
@@ -11,21 +13,21 @@ const RegisterPage = () => {
   const navigate = useNavigate();
   const [style, setStyle] = useState('');
   const [user, setUser] = useState({
-    name: "", email: "", regno: "", phoneno: "", password: "", cpassword: ""
+    name: "", email: "", regno: "", branch: "", batch: "", phoneno: "", password: "", cpassword: ""
   });
 
 
   const PostData = async (e) => {
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
-    const { name, email, regno, phoneno, password, cpassword } = user;
+    const { name, email, regno, branch, batch, phoneno, password, cpassword } = user;
     const res = await fetch("/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name, email, regno, phoneno, password, cpassword
+        name, email, regno, branch, batch, phoneno, password, cpassword
       }),
     });
     const data = await res.json();
@@ -80,7 +82,15 @@ const RegisterPage = () => {
                       <input type="text" className="form-control border border-black" value={user.regno} onChange={(e) => setUser({ ...user, regno: e.target.value })} placeholder="Regno" aria-label="Registration" aria-describedby="basic-addon1" required />
                     </div>
                     <div className="input-group mb-3">
-                      <span className="input-group-text border border-black" id="basic-addon1"><MdOutlineStickyNote2 /></span>
+                      <span className="input-group-text border border-black" id="basic-addon1"><FaCodeBranch /></span>
+                      <input type="text" className="form-control border border-black" value={user.branch} onChange={(e) => setUser({ ...user, branch: e.target.value })} placeholder="Branch" aria-label="Registration" aria-describedby="basic-addon1" required />
+                    </div>
+                    <div className="input-group mb-3">
+                      <span className="input-group-text border border-black" id="basic-addon1"><MdBatchPrediction /></span>
+                      <input type="text" className="form-control border border-black" value={user.batch} onChange={(e) => setUser({ ...user, batch: e.target.value })} placeholder="Batch" aria-label="Registration" aria-describedby="basic-addon1" required />
+                    </div>
+                    <div className="input-group mb-3">
+                      <span className="input-group-text border border-black" id="basic-addon1"><FiPhone /></span>
                       <input type="text" className="form-control border border-black" value={user.phoneno} onChange={(e) => setUser({ ...user, phoneno: e.target.value })} placeholder="Phone Number" aria-label="Registration" aria-describedby="basic-addon1" required />
                     </div>
                     <div className="input-group mb-3">

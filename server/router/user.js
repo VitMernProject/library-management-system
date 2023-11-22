@@ -18,6 +18,8 @@ router.get('/getUserDetails', async(req,res)=>{
                 name:userExist.name,
                 email:userExist.email, 
                 regno:userExist.regno,
+                branch:userExist.branch,
+                batch:userExist.batch,
                 role:userExist.role ?? '',
                 phoneno:userExist.phoneno,
             }});
