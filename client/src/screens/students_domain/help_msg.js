@@ -1,8 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import NavBar from '../components/sidenavbar';
 import TopNaBbar from '../components/topnavbar';
+import "./help_msg.css";
+import { IoPersonCircleOutline } from "react-icons/io5";
+
 
 const HelpMsg=()=> {
+    const [data,setData] = useState([]);
+    const fetchdetails = async()=>{
+      const res = await fetch(`/msgs`,{
+        method:'GET',
+      })
+      const response = await res.json();
+      setData(response.data);
+    }
+    
+    useEffect(()=>{fetchdetails()
+    },[]);
+    
   const [msg,setMsg]=useState('');
   const sendmsg=async(e)=>{
     e.preventDefault();
@@ -38,7 +53,7 @@ const HelpMsg=()=> {
             <NavBar/>
           </div>
         <div className='w-100'>
-          <div className='main-section w-100 d-flex justify-content-center overflow-y-auto' style={{"height":"52%"}}>
+          <div className='main-section w-100 d-flex justify-content-center overflow-y-auto'>
           {
             (localStorage.getItem('role')==='student')?
             <div className="w-auto p-5 d-flex flex-column align-items-center"> 
@@ -56,29 +71,24 @@ const HelpMsg=()=> {
               </div>
             </div>
             :<div>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            </div>
+              {
+                data.map((val,index)=>
+<div className = "msgbox w-100 m-3">
+                <div className = "d-flex align-items-center justify-content-between">
+                  <div className= ""> 
+                    <IoPersonCircleOutline className="m-2 fs-3" />{val.student.name}
+                  </div>
+                  <div className="m-2">
+                    {val.date.toString().substring(0,10)}
+                  </div>
+                </div>
+                <div className = "m-2">
+                  {val.msg}
+                </div>   
+              </div>  
+                )
+              }
+            </div> 
           }
           </div>
           </div>
