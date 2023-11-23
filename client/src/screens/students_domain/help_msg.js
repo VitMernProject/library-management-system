@@ -48,12 +48,11 @@ const HelpMsg=()=> {
         <TopNaBbar/>
         </div>
         <div>
-        <div className='d-flex'>
+        <div className='d-flex body-sec'>
           <div className="p-0">
             <NavBar/>
           </div>
         <div className='w-100'>
-          
           {
             (localStorage.getItem('role')==='student')?
             <div className='main-section w-100 d-flex justify-content-center overflow-y-auto'>
@@ -73,13 +72,13 @@ const HelpMsg=()=> {
             </div>
             </div>
             :
-            <div className='main-section w-100 d-flex justify-content-center overflow-y-auto' style={{"height":"52%"}}>
+            <div className='main-section overflow-y-auto'>
               {
                 data.map((val,index)=>
-<div className = "msgbox w-100 m-3">
+<div className = "msgbox m-3">
                 <div className = "d-flex align-items-center justify-content-between">
                   <div className= ""> 
-                    <IoPersonCircleOutline className="m-2 fs-3" />{val.student.name}
+                    <IoPersonCircleOutline className="m-2 fs-3" />{val.student.name} - {val.student.regno}
                   </div>
                   <div className="m-2">
                     {val.date.toString().substring(0,10)}

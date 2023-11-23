@@ -42,12 +42,12 @@ const Addbook = () => {
         <div className='p-0'>
           <TopNavBar/>
         </div>
-        <div className='d-flex'>
+        <div className='d-flex body-sec'>
           <div className="p-0">
             <SideNavBar/>
           </div>
-          <div className="home w-100 d-flex justify-content-center align-items-start">
-            <div className="frm overflow-auto h-75 w-50 p-4 rounded shadow">
+          <div className="main-section w-100 d-flex justify-content-center align-items-center ">
+            <div className="frm w-50 p-4 rounded shadow">
               <form className="text-white" method="POST" onSubmit={postdata}>
               <div className="mb-3">
                 <label className="form-label">BookId</label>

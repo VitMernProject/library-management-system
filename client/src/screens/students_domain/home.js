@@ -24,7 +24,7 @@ const Home = () => {
         <div className='p-0'>
           <TopNaBbar name={data.name}/>
         </div>
-        <div className='d-flex'>
+        <div className='d-flex body-sec'>
         <div className="p-0">
            <NavBar/>
         </div>
