@@ -11,6 +11,7 @@ import {IoIosPeople} from 'react-icons/io'
 const SideNavBar = () => {
     const role = localStorage.getItem('role');
   return (
+    <>
           <div className='sidebar'>
               <ul >
                   <li><NavLink className="a" to="/home"><AiOutlineHome className='me-3' />Home</NavLink></li>
@@ -25,6 +26,7 @@ const SideNavBar = () => {
                   {/* <li><NavLink className="a" to="/home"><HiOutlineLogout className='me-3' />Logout</NavLink></li> */}
               </ul>
           </div>
+    </>
     )
 }
 

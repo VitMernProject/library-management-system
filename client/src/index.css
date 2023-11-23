@@ -2,7 +2,7 @@
 
 body{
   background-color: #2d2f30;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .wel{
