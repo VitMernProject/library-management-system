@@ -43,4 +43,17 @@ router.post("/addbook",async(req,res) => {
     console.log(err);
   }
 })
+
+router.get("/getRecomendedBooks",async(req,res)=>{
+    const cseBooks = await Book.find({branch:"CSE"}).limit(5);
+    const eceBooks = await Book.find({branch:"ECE"}).limit(5);
+    const mathBooks = await Book.find({branch:"MATH"}).limit(5);
+    const mgtBooks = await Book.find({branch:"MGT"}).limit(5)
+    const lawBooks = await Book.find({branch:"LAW"}).limit(5);
+    const phyBooks = await Book.find({branch:"PHY"}).limit(5);
+    const cheBooks = await Book.find({branch:"CHE"}).limit(5);
+    
+    res.status(200).json({data:{"cse":cseBooks,"ece":eceBooks,"math":mathBooks,"mgt":mgtBooks,"law":lawBooks,"phy":phyBooks,"che":cheBooks}});
+})
+
 module.exports = router;

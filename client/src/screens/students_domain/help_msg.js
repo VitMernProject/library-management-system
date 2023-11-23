@@ -38,9 +38,10 @@ const HelpMsg=()=> {
             <NavBar/>
           </div>
         <div className='w-100'>
-          <div className='main-section w-100 d-flex justify-content-center overflow-y-auto' style={{"height":"52%"}}>
+          
           {
             (localStorage.getItem('role')==='student')?
+            <div className='main-section w-100 d-flex justify-content-center overflow-y-auto'>
             <div className="w-auto p-5 d-flex flex-column align-items-center"> 
               <div className='msgbox p-4 rounded shadow w-auto'>
                 <div classname="h1"><p>Message</p></div>
@@ -55,7 +56,9 @@ const HelpMsg=()=> {
                   </form>
               </div>
             </div>
-            :<div>
+            </div>
+            :
+            <div className='main-section w-100 d-flex justify-content-center overflow-y-auto' style={{"height":"52%"}}>
             <h1>Hello</h1>
             <h1>Hello</h1>
             <h1>Hello</h1>
@@ -83,7 +86,6 @@ const HelpMsg=()=> {
           </div>
           </div>
         </div>
-      </div>
     </div>
     
   )
