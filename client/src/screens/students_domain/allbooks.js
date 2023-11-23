@@ -93,7 +93,6 @@ const AllBooks = () => {
                           (val.copies > 0)? <button className="btn text-light bg-success regsubmit"  onClick={()=>postdata(val)}>Issue</button>:<></>
                           :<button className="btn text-light bg-success regsubmit"  onClick={()=>null}>Edit</button>
                         }
-                        
                         </td>
                       </tr>
                     )
