@@ -60,7 +60,8 @@ const RegisterPage = () => {
             <div className="p-0">
               <SideNavBar />
             </div>
-            <div className=" main-section vw-100 vh-100">
+            <div className='w-100'>
+            <div className=" main-section overflow-y-auto">
               <h2 className="rtext text-white text-center p-5">Create an account for student</h2>
               <div onClick={onClicked} className={`bg-white logincard ${style} rounded w-50 pb-3 mx-auto d-flex flex-column align-items-center justify-content-center`}>
                 <div className="align-items-center justify-content-around d-flex">
@@ -109,6 +110,7 @@ const RegisterPage = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>

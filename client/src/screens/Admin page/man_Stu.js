@@ -13,7 +13,7 @@ const ManStu = () => {
         <TopNavBar />
       </div>
       <div className="d-flex">
-        <div className="p-0">
+        <div className="">
           <NavBar />
         </div>
         <div className="main-section w-100 p-3">
