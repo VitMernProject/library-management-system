@@ -2,23 +2,32 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/sidenavbar";
 import TopNaBbar from "../components/topnavbar";
 import Search from "../components/search";
-import { useNavigate } from "react-router-dom";
 
 
 const AllBooks = () => {
-  const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [search,setSearch] = useState("");
+  const [edit, setEdit] = useState([]);
+  const [editmode, setEditmode] = useState({
+    index: 0,
+    mode:false,
+  })
+
   const fetchdetails = async () => {
-    const res = await fetch(`/getAllBooks`, {
+    const res = await fetch(`/getAllBooks?search=${search}`, {
       method: "GET",
     });
     const response = await res.json();
-    setData(response.data);
+    await setData(response.data);
+    const newData = [];
+    response.data.map((val,index)=>newData.push({"copies":val.copies}));
+    setEdit(newData);
   }
   
   useEffect(()=>{
     fetchdetails()
-  },[]);
+    console.log(edit);
+  },[search]);
   
   const postdata = async (b_data) =>{
     document.querySelectorAll(".regsubmit").forEach((s)=>s.setAttribute("disabled","true"))
@@ -43,6 +52,31 @@ const AllBooks = () => {
       }  
     }
   
+    const updateFieldChanged = index => e =>{
+      let newArr = [...edit];
+      console.log(newArr);
+      newArr[index].copies = e.target.value;
+      console.log(newArr);
+      setEdit(newArr);
+    }
+
+    const updateData=async (index,val)=>{
+      await fetch("/updatebook",{
+        method:"PUT",
+        headers:{
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify(
+          {
+            "bookid":val._id,
+            "copies":parseInt(edit[index].copies)
+          }
+        )
+      }).then(()=>{
+        setEditmode({mode:false});
+        fetchdetails();
+      })
+    }
 
   return (
     <div className="svnav m-0">
@@ -58,7 +92,7 @@ const AllBooks = () => {
               All Books
             </div>
             <div className='p-0 pb-2'>
-              <Search/>
+            <Search val={search} onChange={(e)=>{setSearch(e.target.value)}}  />
             </div>
             <div className="booksTable table-responsive-md mt-1 overflow-auto">
               <table className="table  table-hover table-dark ">
@@ -84,14 +118,14 @@ const AllBooks = () => {
                         <td>{val.title}</td>
                         <td>{val.author}</td>
                         <td>{val.branch}</td>
-                        <td>{val.copies}</td>
+                        {index === editmode.index && editmode.mode?<td><input name={"copies"} value={(edit.length === 0)?0:edit[index].copies} onChange={updateFieldChanged(index)} min={0} max={30} type="range"/> {edit[index].copies}</td>:<td>{val.copies}</td>}
                         <td>{val.location}</td>
                         <td>{val.status}</td>
                         <td>
                         {
                           localStorage.getItem('role')==='student' ?
                           (val.copies > 0)? <button className="btn text-light bg-success regsubmit"  onClick={()=>postdata(val)}>Issue</button>:<></>
-                          :<button className="btn text-light bg-success regsubmit"  onClick={()=>null}>Edit</button>
+                          :<button className="btn text-light bg-success regsubmit"  onClick={(index === editmode.index && editmode.mode)?()=>updateData(index,val):()=>setEditmode({index:index, mode:true})}>{index === editmode.index && editmode.mode?"Update":"Edit"}</button>
                         }
                         </td>
                       </tr>

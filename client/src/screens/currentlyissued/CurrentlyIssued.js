@@ -6,9 +6,10 @@ import Search from '../components/search'
 
 const CurrentlyIssued = () => {
   const [data,setData] = useState([]);
+  const [search,setSearch] = useState("");
   const fetchdetails = async()=>{
     const studentId = localStorage.getItem('uid');
-    const res = await fetch(`/issueBook?uid=${studentId}`,{
+    const res = await fetch(`/issueBook?uid=${studentId}&search=${search}`,{
       method:'GET',
     })
     const response = await res.json();
@@ -16,7 +17,7 @@ const CurrentlyIssued = () => {
   }
   
   useEffect(()=>{fetchdetails()
-  },[]);
+  },[search]);
 
     return (
       <div>
@@ -33,7 +34,7 @@ const CurrentlyIssued = () => {
                 Currently Issued Books
               </div>
               <div className='p-0 pb-2'>
-                <Search/>
+              <Search val={search} onChange={(e)=>{setSearch(e.target.value)}}  />
               </div>
               <div className="booksTable table-responsive-md mt-1 overflow-auto">
                 <table className="table  table-hover table-dark">

@@ -1,12 +1,36 @@
 import "./man_Stu.css";
+import {React,useEffect, useState} from "react";
 import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
-import React from "react";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const ManStu = () => {
+  const [data, setData] = useState([]);
+  const [search,setSearch] = useState("");
+
+  const fetchdetails = async () => {
+    const res = await fetch(`/getAllUsers?search=${search}&role=student`, {
+      method: "GET",
+    });
+    const response = await res.json();
+    setData(response.users);
+  }
+  
+  useEffect(()=>{
+    fetchdetails();
+  },[search]);
+
+  const delUser=async(id)=>{
+    document.querySelectorAll(".regsubmit").forEach((s)=>s.setAttribute("disabled","true"))
+    await fetch(`/deleteUser?id=${id}`,{
+      method:"DELETE",
+    })
+    fetchdetails();
+    document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"))
+  }
+
   return (
     <>
       <div>
@@ -25,8 +49,9 @@ const ManStu = () => {
           </div>
 
           <div className="p-0 pb-2">
-            <Search />
+            <Search val={search} onChange={(e)=>{setSearch(e.target.value)}}  />
           </div>
+
           <div className="booksTable overflow-auto table-responsive-md mt-1">
             <table className="table table-hover table-dark">
               <thead className="table-secondary">
@@ -35,115 +60,25 @@ const ManStu = () => {
                   <th>Student Name</th>
                   <th>Student ID</th>
                   <th>Branch</th>
-                  <th>Join Year</th>
+                  <th>Batch</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Tadikamalla Sudheshna</td>
-                  <td>21BCE7736</td>
-                  <td>CSE</td>
-                  <td>2021</td>
+              {
+                data.map((val,index)=>
+                  <tr>
+                  <td>{index+1}</td>
+                  <td>{val.name}</td>
+                  <td>{val.regno}</td>
+                  <td>{val.branch}</td>
+                  <td>{val.batch}</td>
                   <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
+                    <button className="btn text-light bg-danger regsubmit" onClick={()=>delUser(val._id)}>Remove</button>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Eswar Aditya</td>
-                  <td>21BCE8184</td>
-                  <td>CSE</td>
-                  <td>2021</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Sowjanya</td>
-                  <td>21BCE7947</td>
-                  <td>CSE</td>
-                  <td>2021</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Karthik</td>
-                  <td>21BCE7894</td>
-                  <td>CSE</td>
-                  <td>2021</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Harshini</td>
-                  <td>21BCE8394</td>
-                  <td>CSE</td>
-                  <td>2021</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Rahul</td>
-                  <td>21BCE7194</td>
-                  <td>CSE</td>
-                  <td>2021</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Basera</td>
-                  <td>21BCE7907</td>
-                  <td>CSE</td>
-                  <td>2021</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Tadikamalla Suraj</td>
-                  <td>21BCE7738</td>
-                  <td>CSE</td>
-                  <td>2024</td>
-                  <td>
-                    <button className="btn me-2 text-light bg-success">
-                      Edit
-                    </button>
-                    <button className="btn text-light bg-danger">Remove</button>
-                  </td>
-                </tr>
+                )
+              }
               </tbody>
             </table>
           </div>

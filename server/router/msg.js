@@ -6,7 +6,7 @@ require('../db/conn');
 const Msg = require("../model/msgSchema");
 
 router.get('/msgs',async(req,res)=>{
-    const data=await Msg.find({}).populate('student','name regno')
+    const data=await Msg.find({}).populate('student','name regno').sort({date:-1})
     return res.status(200).json({data: data})
 })
 
