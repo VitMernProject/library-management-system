@@ -10,7 +10,8 @@ router.get("/getBooks",async(req,res) => {
 })
 router.get('/getAllBooks', async(req,res)=>{
   try{
-      const Books = await Book.find({});
+      const search = req.query.search || "";
+      const Books = await Book.find({bookid:{$regex:search,$options:'i'}});
       if(Books){
           return res.status(200).json({data:Books});
       }
@@ -21,6 +22,16 @@ router.get('/getAllBooks', async(req,res)=>{
   catch(error){
       console.log(error);
   }
+})
+
+router.put("/updatebook",async(req,res)=>{
+  const {bookid,title,author,copies,status,branch,location} = req.body;
+  try{
+    await Book.updateOne({_id:bookid},{$set:{copies:copies}});
+  }catch(err){
+    console.log(err);
+  }
+  res.status(200).json({msg:"updated"});
 })
 
 router.post("/addbook",async(req,res) => {

@@ -6,8 +6,9 @@ import { React, useState, useEffect } from "react";
 
 const Issue_req = () => {
   const [data, setData] = useState([]);
+  const [search,setSearch] = useState("");
   const fetchdetails = async () => {
-    const res = await fetch(`/issueBook?status=Pending`, {
+    const res = await fetch(`/issueBook?status=Pending&search=${search}`, {
       method: "GET",
     });
     const response = await res.json();
@@ -16,7 +17,7 @@ const Issue_req = () => {
 
   useEffect(() => {
     fetchdetails();
-  }, []);
+  }, [search]);
 
   const removeRequest=async(val,index)=> {
     document.getElementsByClassName('regsubmit').item(index).setAttribute("disabled","true");
@@ -50,7 +51,7 @@ const Issue_req = () => {
             Student Requested to Admin to issue these Book
           </div>
           <div className="p-0 pb-2">
-            <Search />
+            <Search val={search} onChange={(e)=>{setSearch(e.target.value)}}  />
           </div>
           <div className="booksTable overflow-auto table-responsive-md mt-1">
             <table className="table  table-hover table-dark">

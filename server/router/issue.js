@@ -3,11 +3,13 @@ const router = express.Router();
 
 const Issue = require("../model/issueSchema");
 const Book = require("../model/bookSchema");
+const { Query } = require('mongoose');
 
 require('../db/conn');
 router.get('/issueBook',async(req, res) =>{
     const {book, student, issueDate, returnDate, status} = req.query;
     const queryObj = {};
+    const search = req.query.search || "";
     if(book){
         queryObj.book = book;
     }
@@ -23,7 +25,9 @@ router.get('/issueBook',async(req, res) =>{
     if(status){
         queryObj.status = status;
     }
-    const data = await Issue.find(queryObj).populate("book").populate("student","name regno");
+    const result = await Issue.find(queryObj).populate({path:"book",match:{bookid:{$regex:search,$options:'i'}}}).populate({path:"student",select:"name regno"});
+    const data = [] 
+    result.map((val,index)=> (val.book === null)?null:data.push(val))
     res.status(200).json({data})
 })
 router.post('/issueBook',async(req, res) => {

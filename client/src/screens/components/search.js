@@ -3,11 +3,11 @@ import "./search.css";
 import {FaSearch} from 'react-icons/fa';
 
 
-const Search = () => {
+const Search = (props) => {
   return (
     <div class="search-bar">
-        <input type="text" placeholder="Search..." />
-        <button type="submit"><FaSearch/></button>
+        <input value={props.val} onChange={props.onChange} type="text" placeholder="Search by id..." />
+        <button onClick={props.click} type="submit"><FaSearch/></button>
     </div>
   )
 }

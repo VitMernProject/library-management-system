@@ -5,6 +5,8 @@ const bcrypt = require('bcryptjs');
 
 require('../db/conn');
 const User = require("../model/userSchema")
+const Issue = require("../model/issueSchema");
+const Msg = require("../model/msgSchema");
 
 router.get('/', (req, res) => {
     res.send(`Hello world from server router js`);
@@ -99,15 +101,25 @@ router.post('/signin', async (req, res) =>{
         }else{
             return res.status(400).json({ error: 'Invalid Credentials' });
         }
-
-        
-        
-
     }catch(err){
         console.log(err);
     }
 });
 
 
+router.get("/getAllusers",async(req,res)=>{
+    const search = req.query.search || "";
+    const role = req.query.role || "";
+    const users = await User.find({regno:{$regex:search,$options:'i'},role:role},"name regno branch batch");
+    res.status(200).json({users:users});
+});
+
+router.delete("/deleteUser",async(req,res)=>{
+    const {id} = req.query;
+    await User.deleteOne({_id:id});
+    await Issue.deleteMany({student:id});
+    await Msg.deleteMany({student:id});
+    res.status(200).json({msg:"deleted"});
+})
 
 module.exports = router;

@@ -5,8 +5,10 @@ import Search from '../components/search'
 
 const AllIssued = () => {
   const [data,setData] = useState([]);
+  const [search,setSearch] = useState("");
+
   const fetchdetails = async()=>{
-    const res = await fetch(`/issueBook`,{
+    const res = await fetch(`/issueBook?search=${search}`,{
       method:'GET',
     })
     const response = await res.json();
@@ -14,7 +16,7 @@ const AllIssued = () => {
   }
 
   useEffect(()=>{fetchdetails()
-  },[]);
+  },[search]);
   return (
     <div>
       <div className="svnav m-0">
@@ -30,7 +32,7 @@ const AllIssued = () => {
               All Issued Books
             </div>
             <div className='p-0 pb-2'>
-              <Search/>
+              <Search val={search} onChange={(e)=>{setSearch(e.target.value)}}  />
             </div>
             <div className="booksTable table-responsive-md mt-1 overflow-auto">
               <table className="table  table-hover table-dark">
