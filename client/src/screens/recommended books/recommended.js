@@ -1,7 +1,6 @@
-import react from 'react'
+import React from 'react'
 import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
-import Search from '../components/search'
 
 const Recommended = () => {
     return(
@@ -10,7 +9,7 @@ const Recommended = () => {
       <div className='p-0'>
         <TopNavBar/>
       </div>
-      <div className='d-flex'>
+      <div className='d-flex body-sec'>
           <div className="p-0">
             <SideNavBar/>
           </div>
@@ -19,8 +18,8 @@ const Recommended = () => {
               Recommended Books
             </div>
             
-            <div className=' overflow-auto h-75'>
-            <div className="h-50 table-responsive-md mt-1 overflow-auto">
+            <div className=''>
+            <div className="table-responsive-md mt-1">
               <table className="table  table-hover table-dark">
                 <thead className="table-secondary">
                   <tr>
@@ -73,7 +72,7 @@ const Recommended = () => {
                 </tbody>
               </table>
             </div>
-            <div className="booksTable table-responsive-md mt-1 overflow-auto">
+            <div className=" table-responsive-md mt-1">
               <table className="table  table-hover table-dark">
                 <thead className="table-secondary">
                   <tr>
