@@ -7,6 +7,7 @@ const { Query } = require('mongoose');
 
 require('../db/conn');
 router.get('/issueBook',async(req, res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     const {book, student, issueDate, returnDate, status} = req.query;
     const queryObj = {};
     const search = req.query.search || "";
@@ -32,6 +33,7 @@ router.get('/issueBook',async(req, res) =>{
 })
 
 router.post('/issueBook',async(req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     const {book, student, issueDate, returnDate, status} = req.body;
     if(!book || !student){
         return res.status(401).json({msg: "Please provide book and student details"});
@@ -54,6 +56,7 @@ router.post('/issueBook',async(req, res) => {
 })
 
 router.put("/issueBook",async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     const {id} = req.query;
     if(!id){
         return res.status(409).json({msg:"id is missing"});
@@ -67,6 +70,7 @@ router.put("/issueBook",async(req,res)=>{
 })
 
 router.delete("/issueBook",async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     const {id} = req.query;
     if(!id){
         return res.status(409).json({msg:"id is missing"});
