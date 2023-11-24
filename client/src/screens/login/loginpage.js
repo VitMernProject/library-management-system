@@ -14,10 +14,13 @@ const LoginPage = () => {
     document.getElementById('regsubmit').setAttribute("disabled", "true");
     document.getElementById('txt').innerHTML = "please wait ...";
     try{
-      const res = await fetch('/signin', {
+      const res = await fetch('http://online-lms.up.railway.app/signin', {
         method: 'POST',
+        // mode:"no-cors",
         headers:{
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Origin': '*'
         }, 
         body:JSON.stringify({
           email,password 

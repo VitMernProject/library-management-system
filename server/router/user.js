@@ -6,6 +6,7 @@ const User = require("../model/userSchema");
 require('../db/conn');
 
 router.get('/getUserDetails', async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     const uid = req.query.uid;
     if(!uid){
         return res.status(422).json({message:'UID Not Found !!!'});

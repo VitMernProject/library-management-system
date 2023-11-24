@@ -7,9 +7,11 @@ const Book = require("../model/bookSchema");
 const Issue = require('../model/issueSchema');
 
 router.get("/getBooks",async(req,res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   res.status(200).json({message:"Get Books route run successfully"});
 })
 router.get('/getAllBooks', async(req,res)=>{
+  res.set('Access-Control-Allow-Origin', '*');
   try{
       const search = req.query.search || "";
       const Books = await Book.find({bookid:{$regex:search,$options:'i'}});
@@ -26,6 +28,7 @@ router.get('/getAllBooks', async(req,res)=>{
 })
 
 router.put("/updatebook",async(req,res)=>{
+  res.set('Access-Control-Allow-Origin', '*');
   const {bookid,title,author,copies,status,branch,location} = req.body;
   try{
     await Book.updateOne({_id:bookid},{$set:{copies:copies,status:status,location:location}});
@@ -36,6 +39,7 @@ router.put("/updatebook",async(req,res)=>{
 })
 
 router.delete("/deleteBook",async(req,res)=>{
+  res.set('Access-Control-Allow-Origin', '*');
   const id = req.query.id;
   try{
     await Book.deleteOne({_id:id});
@@ -47,6 +51,7 @@ router.delete("/deleteBook",async(req,res)=>{
 })
 
 router.post("/addbook",async(req,res) => {
+  res.set('Access-Control-Allow-Origin', '*');
   const {bookid,title,author,copies,status,branch,location} = req.body;
   if (!bookid || !title || !author || !copies || !status || !branch || !location){
     return res.status(422).json({message:"Fields are missing!!"});
@@ -68,6 +73,7 @@ router.post("/addbook",async(req,res) => {
 })
 
 router.get("/getRecomendedBooks",async(req,res)=>{
+  res.set('Access-Control-Allow-Origin', '*');
     const cseBooks = await Book.find({branch:"CSE"}).limit(5);
     const eceBooks = await Book.find({branch:"ECE"}).limit(5);
     const mathBooks = await Book.find({branch:"MATH"}).limit(5);

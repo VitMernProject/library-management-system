@@ -39,6 +39,7 @@ router.get('/', (req, res) => {
 //async-await
 
 router.post('/register', async (req, res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     const {name, email, regno, branch, batch, phoneno, password, cpassword } = req.body;
     
     if(!name|| !email|| !regno|| !branch|| !batch|| !phoneno || !password|| !cpassword ){
@@ -71,6 +72,7 @@ router.post('/register', async (req, res) =>{
 
 // login route
 router.post('/signin', async (req, res) =>{
+    res.set('Access-Control-Allow-Origin', '*');
     try{
         let token;
         const{ email, password } = req.body;
@@ -108,6 +110,7 @@ router.post('/signin', async (req, res) =>{
 
 
 router.get("/getAllusers",async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     const search = req.query.search || "";
     const role = req.query.role || "";
     const users = await User.find({regno:{$regex:search,$options:'i'},role:role},"name regno branch batch");
@@ -115,6 +118,7 @@ router.get("/getAllusers",async(req,res)=>{
 });
 
 router.delete("/deleteUser",async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
     const {id} = req.query;
     await User.deleteOne({_id:id});
     await Issue.deleteMany({student:id});
