@@ -2,6 +2,7 @@ import {React, useEffect, useState} from 'react'
 import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
 import Search from '../components/search'
+import axios from '../services/instance'
 
 
 const CurrentlyIssued = () => {
@@ -9,11 +10,9 @@ const CurrentlyIssued = () => {
   const [search,setSearch] = useState("");
   const fetchdetails = async()=>{
     const studentId = localStorage.getItem('uid');
-    const res = await fetch(`/issueBook?uid=${studentId}&search=${search}`,{
-      method:'GET',
+    await axios.get(`/issueBook?uid=${studentId}&search=${search}`).then(function(res){
+      setData(res.data.data);
     })
-    const response = await res.json();
-    setData(response.data);
   }
   
   useEffect(()=>{fetchdetails()

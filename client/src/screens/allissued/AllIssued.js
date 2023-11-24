@@ -2,17 +2,16 @@ import {React,useState,useEffect} from 'react'
 import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
 import Search from '../components/search'
+import axios from '../services/instance'
 
 const AllIssued = () => {
   const [data,setData] = useState([]);
   const [search,setSearch] = useState("");
 
   const fetchdetails = async()=>{
-    const res = await fetch(`/issueBook?search=${search}`,{
-      method:'GET',
+    await axios.get(`/issueBook?search=${search}`).then(function(res){
+      setData(res.data.data);
     })
-    const response = await res.json();
-    setData(response.data);
   }
 
   useEffect(()=>{fetchdetails()

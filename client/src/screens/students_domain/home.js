@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react'
 import NavBar from '../components/sidenavbar';
 import TopNaBbar from '../components/topnavbar';
 import profilepic from "../../assets/images/profilepic.png"
+import axios from "../services/instance";
 
 const Home = () => {
   const [data, setData] = useState({});
   
   const fetchdetails = async()=>{
     const uid = localStorage.getItem('uid');
-    const res = await fetch(`/getUserDetails?uid=${uid}`,{
-      method:'GET',
+    await axios.get(`/getUserDetails?uid=${uid}`).then(function(response){
+      setData(response.data.data);
     })
-    const response = await res.json();
-    setData(response.data);
   }
   useEffect(()=>{fetchdetails()
   },[]);

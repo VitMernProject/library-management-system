@@ -8,6 +8,7 @@ import { FaCodeBranch } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import TopNavBar from '../components/topnavbar';
 import SideNavBar from '../components/sidenavbar';
+import axios from '../services/instance';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -21,33 +22,26 @@ const RegisterPage = () => {
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
     const { name, email, regno, branch, batch, phoneno, password, cpassword } = user;
-    const res = await fetch("/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name, email, regno, branch, batch, phoneno, password, cpassword
-      }),
-    });
-    const data = await res.json();
-    if (res.status === 201) {
+    await axios.post("/register", {
+      name:name,
+      email:email,
+      regno:regno,
+      branch:branch,
+      batch:batch,
+      phoneno:phoneno,
+      password:password,
+      cpassword:cpassword
+    }).then(function(res){
       window.alert("Registration Successful!");
       console.log("Registration Successful!");
       document.getElementById("regsubmit").removeAttribute("disabled");
       navigate("/manageStudents");
-    } else {
-      window.alert(data.error);
+    }).catch(function(er){
+      window.alert(er.response.data.msg);
       document.getElementById("regsubmit").removeAttribute("disabled");
-    }
+    });
   }
 
-  function onClicked() {
-    if (window.screen.width < '576')
-      setStyle("regcardanimation");
-    else
-      setStyle("");
-  }
 
   return (
     <>
@@ -63,7 +57,7 @@ const RegisterPage = () => {
             <div className='w-100'>
             <div className=" main-section overflow-y-auto">
               <h2 className="rtext text-white text-center p-5">Create an account for student</h2>
-              <div onClick={onClicked} className={`bg-white logincard ${style} rounded w-50 pb-3 mx-auto d-flex flex-column align-items-center justify-content-center`}>
+              <div className={`bg-white logincard ${style} rounded w-50 pb-3 mx-auto d-flex flex-column align-items-center justify-content-center`}>
                 <div className="align-items-center justify-content-around d-flex">
                   <img src={vitlogo} alt="logo" className="logo" />
                   <h4 className="wtext text-black justify-content-around p-5 fw-semibold">Student Register Details</h4>

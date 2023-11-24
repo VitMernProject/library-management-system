@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
+import axios from '../services/instance'
 
 const Recommended = () => {
 
@@ -10,42 +11,33 @@ const Recommended = () => {
     math: [],
     mgt: [],
     law: [],
-    phy: [],
-    che: []
+    vish:[],
+    mech:[],
+    eee:[]
   });
   const fetchdetails = async () => {
-    const res = await fetch(`/getRecomendedBooks`, {
-      method: "GET",
+    await axios.get(`/getRecomendedBooks`).then(function(res){
+      setData(res.data.data);
     });
-    const response = await res.json();
-    setData(response.data);
+    
   }
   useEffect(() => {
     fetchdetails()
   }, []);
 
-  const postdata = async (b_data) => {
-    document.querySelectorAll(".regsubmit").forEach((s) => s.setAttribute("disabled", "true"))
-    const res = await fetch('/issuebook', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        book: b_data._id,
-        student: localStorage.getItem('uid')
-      }),
-    })
-    const data = await res.json();
-    if (res.status === 200) {
-      console.log(data);
-      document.querySelectorAll(".regsubmit").forEach((s) => s.removeAttribute("disabled"));
-      fetchdetails();
-    } else {
-      document.querySelectorAll(".regsubmit").forEach((s) => s.removeAttribute("disabled"));
-      window.alert(data.msg);
+  const postdata = async (b_data) =>{
+    document.querySelectorAll(".regsubmit").forEach((s)=>s.setAttribute("disabled","true"))
+      await axios.post('/issuebook', {
+        "book" : b_data._id,
+        "student" : localStorage.getItem('uid')
+      }).then(function(res){
+        document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
+        fetchdetails();
+      }).catch(function(err){
+          document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
+          window.alert(err.response.data.msg);
+      })  
     }
-  }
 
   return (
     <div>

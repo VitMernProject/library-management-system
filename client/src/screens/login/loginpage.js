@@ -14,35 +14,18 @@ const LoginPage = () => {
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
     document.getElementById('txt').innerHTML = "please wait ...";
-    // try{
-      await axios.post('/signin', {
-        email:email,
-        password:password
-      }).then(function(response){
-        console.log(response);
-      })
-    //   const data = await res.json();
-    //   if(res.status === 200){
-    //     console.log(data);
-    //     localStorage.setItem('uid', data.uid);
-    //     localStorage.setItem('role', data.role);
-    //     // window.alert("Login Successful!");
-    //     navigate("/home");
-    //   }else{
-    //     window.alert(data.error);
-    //   }
-    //   document.getElementById("regsubmit").removeAttribute("disabled");
-    //   document.getElementById('txt').innerHTML = "";
-    // }catch(err){
-    //   document.getElementById('txt').innerHTML = "Network Error ...";
-    //   document.getElementById("regsubmit").removeAttribute("disabled");
-    //   console.log(err);
-    // }
-    
-    
+    await axios.post('/signin', {
+      email:email,
+      password:password
+    }).then(function(response){
+        localStorage.setItem('uid', response.data.uid);
+        localStorage.setItem('role', response.data.role);
+        navigate("/home");
+    }).catch(function(err){     
+      document.getElementById('txt').innerHTML = `${err.response.data.msg}`;
+      document.getElementById("regsubmit").removeAttribute("disabled");
+    })    
   }
-
-  // console.log(GlobalConstants.uid);
 
   return (
     <>

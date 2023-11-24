@@ -3,16 +3,15 @@ import TopNavBar from "../components/topnavbar";
 import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
 import { React, useState, useEffect } from "react";
+import axios from "../services/instance";
 
 const Issue_req = () => {
   const [data, setData] = useState([]);
   const [search,setSearch] = useState("");
   const fetchdetails = async () => {
-    const res = await fetch(`/issueBook?status=Pending&search=${search}`, {
-      method: "GET",
-    });
-    const response = await res.json();
-    setData(response.data);
+    await axios.get(`/issueBook?status=Pending&search=${search}`).then(function(res){
+      setData(res.data.data);
+    })
   };
 
   useEffect(() => {
@@ -21,19 +20,17 @@ const Issue_req = () => {
 
   const removeRequest=async(val,index)=> {
     document.getElementsByClassName('regsubmit').item(index).setAttribute("disabled","true");
-    await fetch(`/issueBook?id=${val._id}`,{
-      method:"DELETE",
+    await axios.delete(`/issueBook?id=${val._id}`).then(function(res){
+      fetchdetails();
     });
-    fetchdetails();
     document.getElementsByClassName('regsubmit').item(index).removeAttribute("disabled");
   }
 
   const approveRequest=async(val,index)=> {
     document.getElementsByClassName('regsubmit').item(index).setAttribute("disabled","true");
-    await fetch(`/issueBook?id=${val._id}`,{
-      method:"PUT",
+    await axios.put(`/issueBook?id=${val._id}`).then(function(res){
+      fetchdetails();
     });
-    fetchdetails();
     document.getElementsByClassName('regsubmit').item(index).removeAttribute("disabled");
   }
 

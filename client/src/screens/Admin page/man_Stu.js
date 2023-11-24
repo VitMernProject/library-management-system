@@ -5,17 +5,17 @@ import NavBar from "../components/sidenavbar";
 import Search from "../components/search";
 import { FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import axios from "../services/instance";
 
 const ManStu = () => {
   const [data, setData] = useState([]);
   const [search,setSearch] = useState("");
 
   const fetchdetails = async () => {
-    const res = await fetch(`/getAllUsers?search=${search}&role=student`, {
-      method: "GET",
+    await axios.get(`/getAllUsers?search=${search}&role=student`).then(function(res){
+      setData(res.data.users);
     });
-    const response = await res.json();
-    setData(response.users);
+    
   }
   
   useEffect(()=>{
@@ -24,10 +24,7 @@ const ManStu = () => {
 
   const delUser=async(id)=>{
     document.querySelectorAll(".regsubmit").forEach((s)=>s.setAttribute("disabled","true"))
-    await fetch(`/deleteUser?id=${id}`,{
-      method:"DELETE",
-    })
-    fetchdetails();
+    await axios.delete(`/deleteUser?id=${id}`).then(function(res){fetchdetails()})
     document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"))
   }
 
