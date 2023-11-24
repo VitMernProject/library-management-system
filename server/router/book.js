@@ -4,6 +4,7 @@ const router = express.Router();
 
 require('../db/conn');
 const Book = require("../model/bookSchema");
+const Issue = require('../model/issueSchema');
 
 router.get("/getBooks",async(req,res) => {
   res.status(200).json({message:"Get Books route run successfully"});
@@ -27,11 +28,22 @@ router.get('/getAllBooks', async(req,res)=>{
 router.put("/updatebook",async(req,res)=>{
   const {bookid,title,author,copies,status,branch,location} = req.body;
   try{
-    await Book.updateOne({_id:bookid},{$set:{copies:copies}});
+    await Book.updateOne({_id:bookid},{$set:{copies:copies,status:status,location:location}});
   }catch(err){
     console.log(err);
   }
   res.status(200).json({msg:"updated"});
+})
+
+router.delete("/deleteBook",async(req,res)=>{
+  const id = req.query.id;
+  try{
+    await Book.deleteOne({_id:id});
+    await Issue.deleteMany({book:id});
+    return res.status(200).json({msg:"deleted"});
+  }catch(err){
+    console.log(err);
+  }
 })
 
 router.post("/addbook",async(req,res) => {

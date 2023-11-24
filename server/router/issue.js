@@ -30,6 +30,7 @@ router.get('/issueBook',async(req, res) =>{
     result.map((val,index)=> (val.book === null)?null:data.push(val))
     res.status(200).json({data})
 })
+
 router.post('/issueBook',async(req, res) => {
     const {book, student, issueDate, returnDate, status} = req.body;
     if(!book || !student){
@@ -73,7 +74,7 @@ router.delete("/issueBook",async(req,res)=>{
     try{
         const bookid = await Issue.findOne({_id:id});
         await Issue.deleteOne({_id:id});
-        await Book.updateOne({_id:bookid.book},{$inc:{copies:+1}});
+        await Book.updateOne({_id:bookid.book},{$inc:{copies:+1},$set:{status:"Available"}});
         return res.status(200).json({msg:"deleted sucessfully"});
     }catch(err){
         console.log(err);

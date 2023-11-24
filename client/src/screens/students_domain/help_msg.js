@@ -15,7 +15,6 @@ const HelpMsg=()=> {
       setData(response.data);
     }
     
-    
     useEffect(()=>{
       if(localStorage.getItem('role') === "admin"){fetchdetails()}
     },[]);
@@ -82,7 +81,7 @@ const HelpMsg=()=> {
             <div className='main-section overflow-y-auto'>
               {
                 data.map((val,index)=>
-<div className = "msgbox m-3">
+                <div key={index} className = "msgbox m-3">
                 <div className = "d-flex align-items-center justify-content-between">
                   <div > 
                     <IoPersonCircleOutline className="m-2 fs-3" />{val.student.name} - {val.student.regno}

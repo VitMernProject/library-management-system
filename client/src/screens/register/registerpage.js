@@ -31,7 +31,7 @@ const RegisterPage = () => {
       }),
     });
     const data = await res.json();
-    if (res.status === 200) {
+    if (res.status === 201) {
       window.alert("Registration Successful!");
       console.log("Registration Successful!");
       document.getElementById("regsubmit").removeAttribute("disabled");

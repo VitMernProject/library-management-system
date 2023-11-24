@@ -63,11 +63,25 @@ const Addbook = () => {
               </div>
               <div className="mb-3">
                 <label className="form-label">Copies</label>
-                <input placeholder="Copies" required value={book.copies} onChange={(e) => setBook({...book,copies:e.target.value})} type="text" className="form-control"/>
+                <select className='w-100' onChange={(e)=>setBook({...book,copies:e.target.value})}>
+                  <option value={""}>select</option>
+                  <option value={1}>1</option>
+                  <option value={5}>5</option>
+                  <option value={10}>10</option>
+                  <option value={15}>15</option>
+                  <option value={20}>20</option>
+                  <option value={25}>25</option>
+                </select>
+                {/* <input placeholder="Copies" required value={book.copies} onChange={(e) => setBook({...book,copies:e.target.value})} type="text" className="form-control"/> */}
               </div>
               <div className="mb-3">
                 <label className="form-label">Status</label>
-                <input placeholder="Status" required value={book.status} onChange={(e) => setBook({...book,status:e.target.value})} type="text" className="form-control"/>
+                <select className='w-100' onChange={(e)=>setBook({...book,status:e.target.value})}>
+                  <option value={""}>select</option>
+                  <option value={"Available"}>Available</option>
+                  <option value={"Unavailable"}>Unavailable</option>
+                </select>
+                {/* <input placeholder="Status" required value={book.status} onChange={(e) => setBook({...book,status:e.target.value})} type="text" className="form-control"/> */}
               </div>
               <div className="mb-3">
                 <label className="form-label">Location</label>
@@ -75,7 +89,17 @@ const Addbook = () => {
               </div>
               <div className="mb-3">
                 <label className="form-label">Branch</label>
-                <input placeholder="Branch" required value={book.branch} onChange={(e) => setBook({...book,branch:e.target.value})} type="text" className="form-control"/>
+                <select className='w-100' onChange={(e)=>setBook({...book,branch:e.target.value})} required>
+                  <option value={""}>select</option>
+                  <option value={"CSE"}>CSE</option>
+                  <option value={"ECE"}>ECE</option>
+                  <option value={"MECH"}>MECH</option>
+                  <option value={"VISH"}>VISH</option>
+                  <option value={"MGT"}>MGT</option>
+                  <option value={"LAW"}>LAW</option>
+                  <option value={"EEE"}>EEE</option>
+                </select>
+                {/* <input placeholder="Branch" required value={book.branch} onChange={(e) => setBook({...book,branch:e.target.value})} type="text" className="form-control"/> */}
               </div>
               <div className="d-flex justify-content-end">
               <button id='regsubmit' type="submit" className="btn btn-success">Add Book</button>
