@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../components/sidenavbar";
 import TopNaBbar from "../components/topnavbar";
 import Search from "../components/search";
-
+import axios from "../services/instance";
 
 const AllBooks = () => {
   const [data, setData] = useState([]);
@@ -14,16 +14,13 @@ const AllBooks = () => {
   })
 
   const fetchdetails = async () => {
-    const res = await fetch(`/getAllBooks?search=${search}`, {
-      method: "GET",
-    });
-    const response = await res.json();
-    setData(response.data);
-    const newData = [];
-    response.data.map((val,index)=>newData.push({"copies":val.copies,"status":val.status}));
-    setEdit(newData);
+    await axios.get(`/getAllBooks?search=${search}`).then(function(res){
+      setData(res.data.data);
+      const newData = [];
+      res.data.data.map((val,index)=>newData.push({"copies":val.copies,"status":val.status}));
+      setEdit(newData);
+    });    
   }
-  
   useEffect(()=>{
     fetchdetails()
     console.log(edit);
@@ -31,25 +28,16 @@ const AllBooks = () => {
   
   const postdata = async (b_data) =>{
     document.querySelectorAll(".regsubmit").forEach((s)=>s.setAttribute("disabled","true"))
-    const res = await fetch('/issuebook', {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json'
-      }, 
-      body:JSON.stringify({
-        book : b_data._id,
-        student : localStorage.getItem('uid')
-      }),
-      })
-      const data = await res.json();
-      if(res.status === 200){
-        console.log(data);
+      await axios.post('/issuebook', {
+        "book" : b_data._id,
+        "student" : localStorage.getItem('uid')
+      }).then(function(res){
         document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
         fetchdetails();
-      }else{
-        document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
-        window.alert(data.msg);
-      }  
+      }).catch(function(err){
+          document.querySelectorAll(".regsubmit").forEach((s)=>s.removeAttribute("disabled"));
+          window.alert(err.response.data.msg);
+      })  
     }
   
     const updateFieldChanged = index => e =>{
@@ -61,24 +49,14 @@ const AllBooks = () => {
     }
 
     const deleteBook =async (val)=>{
-      await fetch(`/deleteBook?id=${val._id}`,{
-        method:"DELETE"
-      }).then(()=>fetchdetails()) 
+      await axios.delete(`/deleteBook?id=${val._id}`).then(()=>fetchdetails()) 
     }
 
     const updateData=async (index,val)=>{
-      await fetch("/updatebook",{
-        method:"PUT",
-        headers:{
-          "Content-Type": "application/json"
-        },
-        body:JSON.stringify(
-          {
+      await axios.put("/updatebook",{
             "bookid":val._id,
             "copies":parseInt(edit[index].copies),
             "status":edit[index].status
-          }
-        )
       }).then(()=>{
         setEditmode({mode:false});
         fetchdetails();

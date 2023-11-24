@@ -3,16 +3,15 @@ import NavBar from '../components/sidenavbar';
 import TopNaBbar from '../components/topnavbar';
 import "./help_msg.css";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import axios from '../services/instance';
 
 
 const HelpMsg=()=> {
     const [data,setData] = useState([]);
     const fetchdetails = async()=>{
-      const res = await fetch(`/msgs`,{
-        method:'GET',
+      await axios.get(`/msgs`).then(function(response){
+        setData(response.data.data);
       })
-      const response = await res.json();
-      setData(response.data);
     }
     
     useEffect(()=>{
@@ -23,25 +22,17 @@ const HelpMsg=()=> {
   const sendmsg=async(e)=>{
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
-    const res = await fetch("/msgs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        "student":localStorage.getItem('uid'),
-        "msg":msg
-      }),
-    });
-    const data = await res.json();
-    if (res.status === 200) {
+    await axios.post("/msgs", {
+      student:localStorage.getItem('uid'),
+      msg:msg
+    }).then(function(res){
       setMsg('');
       window.alert("msg sent Successful!");
       document.getElementById("regsubmit").removeAttribute("disabled");
-    } else {
-      window.alert(data.msg);
-      document.getElementById("regsubmit").removeAttribute("disabled"); 
-    }
+    }).catch(function(err){
+      window.alert(err.response.data.msg);
+      document.getElementById("regsubmit").removeAttribute("disabled");
+    });
   }
 
   const reset=()=>{

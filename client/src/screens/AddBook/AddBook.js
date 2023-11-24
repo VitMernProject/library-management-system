@@ -3,6 +3,7 @@ import TopNavBar from '../components/topnavbar'
 import SideNavBar from '../components/sidenavbar'
 import './addbook.css'
 import {useNavigate} from 'react-router-dom'
+import axios from '../services/instance'
 
 const Addbook = () => {
   const navigate = useNavigate();
@@ -12,14 +13,14 @@ const Addbook = () => {
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
     const {bookid,title,author,copies,status,branch,location} = book;
-    const res = await fetch("/addbook",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        bookid,title,author,copies,status,branch,location
-      }),
+    const res = await axios.post("/addbook",{
+      bookid:bookid,
+      title:title,
+      author:author,
+      copies:copies,
+      status:status,
+      branch:branch,
+      location:location
     });
     const data = await res.json();
     console.log(res);
