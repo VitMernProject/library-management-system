@@ -3,6 +3,7 @@ import vitlogo from "../../assets/images/vitlogo.png";
 import {MdAlternateEmail} from "react-icons/md";
 import {RiLockPasswordFill} from "react-icons/ri";
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from "../services/instance";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -13,36 +14,30 @@ const LoginPage = () => {
     e.preventDefault();
     document.getElementById('regsubmit').setAttribute("disabled", "true");
     document.getElementById('txt').innerHTML = "please wait ...";
-    try{
-      const res = await fetch('http://online-lms.up.railway.app/signin', {
-        method: 'POST',
-        mode:"cors",
-        headers:{
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Headers': '*',
-          'Access-Control-Allow-Origin': '*'
-        }, 
-        body:JSON.stringify({
-          email,password 
-        }),
-      }).catch((e)=>console.log(e));
-      const data = await res.json();
-      if(res.status === 200){
-        console.log(data);
-        localStorage.setItem('uid', data.uid);
-        localStorage.setItem('role', data.role);
-        // window.alert("Login Successful!");
-        navigate("/home");
-      }else{
-        window.alert(data.error);
-      }
-      document.getElementById("regsubmit").removeAttribute("disabled");
-      document.getElementById('txt').innerHTML = "";
-    }catch(err){
-      document.getElementById('txt').innerHTML = "Network Error ...";
-      document.getElementById("regsubmit").removeAttribute("disabled");
-      console.log(err);
-    }
+    // try{
+      await axios.post('/signin', {
+        email:email,
+        password:password
+      }).then(function(response){
+        console.log(response);
+      })
+    //   const data = await res.json();
+    //   if(res.status === 200){
+    //     console.log(data);
+    //     localStorage.setItem('uid', data.uid);
+    //     localStorage.setItem('role', data.role);
+    //     // window.alert("Login Successful!");
+    //     navigate("/home");
+    //   }else{
+    //     window.alert(data.error);
+    //   }
+    //   document.getElementById("regsubmit").removeAttribute("disabled");
+    //   document.getElementById('txt').innerHTML = "";
+    // }catch(err){
+    //   document.getElementById('txt').innerHTML = "Network Error ...";
+    //   document.getElementById("regsubmit").removeAttribute("disabled");
+    //   console.log(err);
+    // }
     
     
   }

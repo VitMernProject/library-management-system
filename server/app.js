@@ -8,7 +8,7 @@ dotenv.config({path:'./config.env'});
 require('./db/conn');
 // const User = require('./model/userSchema');
 
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 //we link router file
@@ -19,8 +19,6 @@ app.use(require('./router/issue'));
 app.use(require('./router/msg'));
 
 const PORT = process.env.PORT;
-
-
 
 // Middleware
 
