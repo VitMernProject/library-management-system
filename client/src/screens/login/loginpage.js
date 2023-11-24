@@ -16,7 +16,7 @@ const LoginPage = () => {
     try{
       const res = await fetch('http://online-lms.up.railway.app/signin', {
         method: 'POST',
-        // mode:"no-cors",
+        mode:"cors",
         headers:{
           'Content-Type': 'application/json',
           'Access-Control-Allow-Headers': '*',
