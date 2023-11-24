@@ -18,9 +18,9 @@ const AllBooks = () => {
       method: "GET",
     });
     const response = await res.json();
-    await setData(response.data);
+    setData(response.data);
     const newData = [];
-    response.data.map((val,index)=>newData.push({"copies":val.copies}));
+    response.data.map((val,index)=>newData.push({"copies":val.copies,"status":val.status}));
     setEdit(newData);
   }
   
@@ -55,9 +55,15 @@ const AllBooks = () => {
     const updateFieldChanged = index => e =>{
       let newArr = [...edit];
       console.log(newArr);
-      newArr[index].copies = e.target.value;
+      newArr[index][e.target.name] = e.target.value;
       console.log(newArr);
       setEdit(newArr);
+    }
+
+    const deleteBook =async (val)=>{
+      await fetch(`/deleteBook?id=${val._id}`,{
+        method:"DELETE"
+      }).then(()=>fetchdetails()) 
     }
 
     const updateData=async (index,val)=>{
@@ -69,7 +75,8 @@ const AllBooks = () => {
         body:JSON.stringify(
           {
             "bookid":val._id,
-            "copies":parseInt(edit[index].copies)
+            "copies":parseInt(edit[index].copies),
+            "status":edit[index].status
           }
         )
       }).then(()=>{
@@ -112,20 +119,30 @@ const AllBooks = () => {
                 <tbody>
                   {
                     data.map((val,index)=>
-                      <tr>
+                      <tr key={index} >
                         <td>{index +1}</td>
                         <td>{val.bookid}</td>
                         <td>{val.title}</td>
                         <td>{val.author}</td>
                         <td>{val.branch}</td>
-                        {index === editmode.index && editmode.mode?<td><input name={"copies"} value={(edit.length === 0)?0:edit[index].copies} onChange={updateFieldChanged(index)} min={0} max={30} type="range"/> {edit[index].copies}</td>:<td>{val.copies}</td>}
+                        {index === editmode.index && editmode.mode?<td><input name={"copies"} value={edit[index].copies} onChange={updateFieldChanged(index)} min={0} max={30} type="range"/> {edit[index].copies}</td>:<td>{val.copies}</td>}
                         <td>{val.location}</td>
-                        <td>{val.status}</td>
+                        {index === editmode.index && editmode.mode?<td>
+                        <select name={"status"} onChange={updateFieldChanged(index)}>
+                          <option value={""}>select</option>
+                          <option value={"Available"}>Available</option>
+                          <option value={"Unavailable"}>Unavailable</option>
+                        </select></td>
+                        :<td>{val.status}</td>}
                         <td>
                         {
                           localStorage.getItem('role')==='student' ?
                           (val.copies > 0)? <button className="btn text-light bg-success regsubmit"  onClick={()=>postdata(val)}>Issue</button>:<></>
-                          :<button className="btn text-light bg-success regsubmit"  onClick={(index === editmode.index && editmode.mode)?()=>updateData(index,val):()=>setEditmode({index:index, mode:true})}>{index === editmode.index && editmode.mode?"Update":"Edit"}</button>
+                          :<div>
+                          <button className="btn text-light bg-success regsubmit me-2"  onClick={(index === editmode.index && editmode.mode)?()=>updateData(index,val):()=>setEditmode({index:index, mode:true})}>{index === editmode.index && editmode.mode?"Update":"Edit"}
+                          </button>
+                          <button className="btn bg-danger text-light" onClick={()=>deleteBook(val)}>Delete</button>
+                          </div>
                         }
                         </td>
                       </tr>

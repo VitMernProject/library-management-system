@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 //     const {name, email, phone, regno, password, cpassword } = req.body;
 
 //     if(!name|| !email|| !phone|| !regno|| !password|| !cpassword ){
-//         return res.status(422).json({error: "Please fill all fields"});
+//         return res.status(422).json({msg: "Please fill all fields"});
 //     }
 
 //     User.findOne({email: email})
@@ -42,23 +42,23 @@ router.post('/register', async (req, res) =>{
     const {name, email, regno, branch, batch, phoneno, password, cpassword } = req.body;
     
     if(!name|| !email|| !regno|| !branch|| !batch|| !phoneno || !password|| !cpassword ){
-        return res.status(422).json({error: "Please fill all fields"});
+        return res.status(422).json({msg: "Please fill all fields"});
     }
 
     try{
         const userExistAlready = await User.findOne({email: email});
 
         if(userExistAlready){
-            return res.status(422).json({error: "Email Already exists"})
+            return res.status(422).json({msg: "Email Already exists"})
         }else if(password != cpassword ){
-            return res.status(422).json({error: "Password and Confirm Password does not match!"})
+            return res.status(422).json({msg: "Password and Confirm Password does not match!"})
         }else{
             const user = new User({name, email, regno, branch, batch, phoneno ,password, cpassword, role:'student'});
             const userRegister= await user.save();
             if(userRegister){
                 res.status(201).json({msg: "Registered Successfuly! "});
             }else{
-                res.status(500).json({error:"Failed to register"});
+                res.status(500).json({msg:"Failed to register"});
             }
         }
 
@@ -75,7 +75,7 @@ router.post('/signin', async (req, res) =>{
         let token;
         const{ email, password } = req.body;
         if(!email || !password){
-            return res.status(400).json({error: "Please fill all fields"});
+            return res.status(400).json({msg: "Please fill all fields"});
         }
         // else{
         //     res.status(201).json({msg: "Login Successful! "});
@@ -94,12 +94,12 @@ router.post('/signin', async (req, res) =>{
             // });
 
             if (!isMatch){
-                return res.status(400).json({ error: 'Invalid Credentials (password)' });
+                return res.status(400).json({ msg: 'Invalid Credentials (password)' });
             }else{
                 res.json({msg:"Login Successful! ",uid:userLogin._id, role:userLogin.role});
             }
         }else{
-            return res.status(400).json({ error: 'Invalid Credentials' });
+            return res.status(400).json({ msg: 'Invalid Credentials' });
         }
     }catch(err){
         console.log(err);
