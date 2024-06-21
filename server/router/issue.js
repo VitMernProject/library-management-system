@@ -26,8 +26,8 @@ router.get('/issueBook',async(req, res) =>{
     if(status){
         queryObj.status = status;
     }
-    const result = await Issue.find(queryObj).populate({path:"book",match:{bookid:{$regex:search,$options:'i'}}}).populate({path:"student",select:"name regno"});
-    const data = [] 
+    const result = await Issue.find(queryObj).populate({path:"book",match:{bookid:{$regex:search,$options:'i'}}}).populate({path:"student",select:"name regno"}).sort({status:1});
+    const data = []
     result.map((val,index)=> (val.book === null)?null:data.push(val))
     res.status(200).json({data})
 })
@@ -55,6 +55,10 @@ router.post('/issueBook',async(req, res) => {
     }
 })
 
+function getReturnDate(){
+    return new Date(Date.now() + 15 * 24 * 60 * 60 * 1000)
+}
+
 router.put("/issueBook",async(req,res)=>{
     res.set('Access-Control-Allow-Origin', '*');
     const {id} = req.query;
@@ -62,7 +66,22 @@ router.put("/issueBook",async(req,res)=>{
         return res.status(409).json({msg:"id is missing"});
     }
     try{
-        await Issue.updateOne({_id:id},{$set:{status:"Approved"}});
+        await Issue.updateOne({_id:id},{$set:{status:"Approved",issueDate:Date.now(),returnDate:getReturnDate()}});
+        return res.status(200).json({msg:"modified sucessfully"});
+    }catch(err){
+        console.log(err);
+    }
+})
+
+router.put("/returnBook",async(req,res)=>{
+    res.set('Access-Control-Allow-Origin', '*');
+    const {id,bookId} = req.body;
+    if(!id || !bookId){
+        return res.status(409).json({msg:"id is missing"});
+    }
+    try{
+        await Issue.updateOne({_id:id},{$set:{status:"Returned"}});
+        await Book.updateOne({_id:bookId},{$inc:{copies:+1},$set:{status:"Available"}});
         return res.status(200).json({msg:"modified sucessfully"});
     }catch(err){
         console.log(err);

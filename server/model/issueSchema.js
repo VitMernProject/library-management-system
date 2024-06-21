@@ -13,11 +13,11 @@ const IssueSchema = new mongoose.Schema({
     },
     issueDate:{
         type: Date,
-        default: Date.now()
+        default: ""
     },
     returnDate:{
         type: Date,
-        default: () => new Date(Date.now() + 15 * 24 * 60 * 60 * 1000)
+        default: ""
     },
     status:{
         type: String,

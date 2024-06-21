@@ -14,6 +14,12 @@ const AllIssued = () => {
     })
   }
 
+  const returnedBook=async(id,bookid)=>{
+    await axios.put("/returnBook",{id:id,bookId:bookid}).then(function(res){
+      fetchdetails();
+    })
+  }
+
   useEffect(()=>{fetchdetails()
   },[search]);
   return (
@@ -46,6 +52,7 @@ const AllIssued = () => {
                     <th>Issued date</th>
                     <th>Due date</th>
                     <th>Status</th>
+                    <th>Returned</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,9 +65,15 @@ const AllIssued = () => {
                         <td>{val.book.author}</td>
                         <td>{val.student.regno}</td>
                         <td>{val.student.name}</td>
-                        <td>{val.issueDate.toString().substring(0,10)}</td>
-                        <td>{val.returnDate.toString().substring(0,10)}</td>
+                        <td>{val.issueDate?.toString().substring(0,10)}</td>
+                        <td>{val.returnDate?.toString().substring(0,10)}</td>
                         <td>{val.status}</td>
+                        <td>{(val.status === "Approved")?
+                          <button className="btn text-light bg-danger" onClick={()=>returnedBook(val._id,val.book._id)} >
+                          Returned
+                          </button>
+                          :""
+                          }</td>
                         </tr>
                     )}
                 </tbody>
