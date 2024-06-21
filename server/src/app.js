@@ -5,18 +5,18 @@ const app = express();
 const cors = require('cors');
 
 dotenv.config({path:'./config.env'});
-require('./db/conn');
+require('../db/conn');
 // const User = require('./model/userSchema');
 
 app.use(cors());
 app.use(express.json());
 
 //we link router file
-app.use(require('./router/auth'));
-app.use(require('./router/user'));
-app.use(require('./router/book'));
-app.use(require('./router/issue'));
-app.use(require('./router/msg'));
+app.use(require('../router/auth'));
+app.use(require('../router/user'));
+app.use(require('../router/book'));
+app.use(require('../router/issue'));
+app.use(require('../router/msg'));
 
 const PORT = process.env.PORT;
 
@@ -49,7 +49,4 @@ app.get('/signup', (req, res) => {
     res.send(`Hello (signup) world from server`);
 });
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-})
+module.exports = app;
