@@ -19,10 +19,18 @@ const IssueSchema = new mongoose.Schema({
         type: Date,
         default: ""
     },
+    returnedDate:{
+        type:Date,
+        default:""
+    },
     status:{
         type: String,
         enum: ['Pending', 'Approved','Returned'],
         default:'Pending',
+    },
+    fine:{
+        type:Number,
+        default:0
     }
 })
 

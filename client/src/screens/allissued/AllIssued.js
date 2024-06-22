@@ -51,8 +51,10 @@ const AllIssued = () => {
                     <th>Student Name</th>
                     <th>Issued date</th>
                     <th>Due date</th>
+                    <th>Returned date</th>
                     <th>Status</th>
                     <th>Returned</th>
+                    <th>Fine</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,8 +67,9 @@ const AllIssued = () => {
                         <td>{val.book.author}</td>
                         <td>{val.student.regno}</td>
                         <td>{val.student.name}</td>
-                        <td>{val.issueDate?.toString().substring(0,10)}</td>
-                        <td>{val.returnDate?.toString().substring(0,10)}</td>
+                        <td>{val.issueDate?.toString().substring(0,10).split("-").reverse().join("-")}</td>
+                        <td>{val.returnDate?.toString().substring(0,10).split("-").reverse().join("-")}</td>
+                        <td>{val.returnedDate?.toString().substring(0,10).split("-").reverse().join("-")}</td>
                         <td>{val.status}</td>
                         <td>{(val.status === "Approved")?
                           <button className="btn text-light bg-danger" onClick={()=>returnedBook(val._id,val.book._id)} >
@@ -74,6 +77,7 @@ const AllIssued = () => {
                           </button>
                           :""
                           }</td>
+                        <td>{(val.fine===0)?"-":"₹ "+val.fine}</td>
                         </tr>
                     )}
                 </tbody>

@@ -8,6 +8,7 @@ import axios from '../services/instance'
 const CurrentlyIssued = () => {
   const [data,setData] = useState([]);
   const [search,setSearch] = useState("");
+
   const fetchdetails = async()=>{
     const studentId = localStorage.getItem('uid');
     await axios.get(`/issueBook?uid=${studentId}&search=${search}`).then(function(res){
@@ -15,7 +16,9 @@ const CurrentlyIssued = () => {
     })
   }
   
-  useEffect(()=>{fetchdetails()
+  
+  useEffect(()=>{
+    fetchdetails();
   },[search]);
 
     return (
@@ -43,9 +46,11 @@ const CurrentlyIssued = () => {
                       <th>Book ID</th>
                       <th>Title</th>
                       <th>Author</th>
-                      <th>Issued date</th>
+                      <th>Issue date</th>
                       <th>Due date</th>
+                      <th>Returned date</th>
                       <th>Status</th>
+                      <th>Fine</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -56,9 +61,11 @@ const CurrentlyIssued = () => {
                         <td>{val.book.bookid}</td>
                         <td>{val.book.title}</td>
                         <td>{val.book.author}</td>
-                        <td>{val.issueDate?.toString().substring(0,10)}</td>
-                        <td>{val.returnDate?.toString().substring(0,10)}</td>
+                        <td>{val.issueDate?.toString().substring(0,10).split("-").reverse().join("-")}</td>
+                        <td>{val.returnDate?.toString().substring(0,10).split("-").reverse().join("-")}</td>
+                        <td>{val.returnedDate?.toString().substring(0,10).split("-").reverse().join("-")}</td>
                         <td>{val.status}</td>
+                        <td>{(val.fine===0)?"-":"₹ "+val.fine}</td>
                       </tr>
                     )
                   }

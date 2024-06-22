@@ -1,9 +1,27 @@
 const express = require('express');
 const router = express.Router();
+const cron = require("node-cron")
 
 const Issue = require("../model/issueSchema");
 const Book = require("../model/bookSchema");
 const { Query } = require('mongoose');
+
+
+function create_corn_datetime(seconds,minute,hour,day_of_month,month,week_of_month){
+    return seconds+" "+minute+" "+hour+" "+day_of_month+" "+month+" "+week_of_month;
+}
+
+cron.schedule(
+    create_corn_datetime('00','00','00','*','*','*'),
+    async function () {
+        try{
+        const res = await Issue.updateMany({returnDate:{$lt:new Date().getTime()},returnedDate:{$gte:this.returnDate},status:{$ne:"Returned"}},{$inc:{fine:+1}})
+        console.log(res);
+        }catch(err){
+            console.log(err);
+        }
+    }
+)
 
 require('../db/conn');
 router.get('/issueBook',async(req, res) =>{
@@ -26,7 +44,7 @@ router.get('/issueBook',async(req, res) =>{
     if(status){
         queryObj.status = status;
     }
-    const result = await Issue.find(queryObj).populate({path:"book",match:{bookid:{$regex:search,$options:'i'}}}).populate({path:"student",select:"name regno"}).sort({status:1});
+    const result = await Issue.find(queryObj).populate({path:"book",match:{bookid:{$regex:search,$options:'i'}}}).populate({path:"student",select:"name regno"}).sort({status:1,issueDate:1});
     const data = []
     result.map((val,index)=> (val.book === null)?null:data.push(val))
     res.status(200).json({data})
@@ -55,6 +73,20 @@ router.post('/issueBook',async(req, res) => {
     }
 })
 
+router.put("/updateFines",async(req,res)=>{
+    res.set('Access-Control-Allow-Origin','*');
+    const {id,fine} = req.body;
+    if(!id || !fine){
+        return res.status(409).json({msg:"missing fields"});
+    }
+    try{
+        await Issue.updateOne({_id:id},{$set:{fine:fine}});
+        return res.status(200).json({msg:"updated successfully"});
+    }catch(err){
+        console.log(err);
+    }
+})
+
 function getReturnDate(){
     return new Date(Date.now() + 15 * 24 * 60 * 60 * 1000)
 }
@@ -80,7 +112,7 @@ router.put("/returnBook",async(req,res)=>{
         return res.status(409).json({msg:"id is missing"});
     }
     try{
-        await Issue.updateOne({_id:id},{$set:{status:"Returned"}});
+        await Issue.updateOne({_id:id},{$set:{status:"Returned",returnedDate:Date.now()}});
         await Book.updateOne({_id:bookId},{$inc:{copies:+1},$set:{status:"Available"}});
         return res.status(200).json({msg:"modified sucessfully"});
     }catch(err){
